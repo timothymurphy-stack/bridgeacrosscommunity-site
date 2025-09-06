@@ -37,8 +37,8 @@ hr{border:0;border-top:1px solid rgba(0,0,0,.06);margin:24px 0}
 .hero-illustration img {
 display: block;
 width: 100%;
-max-width: 900px;
+max-width: 980px;
 height: auto;
-margin: 6px 0 0;
-filter: drop-shadow(0 2px 12px rgba(0,0,0,.06));
+margin: 8px 0 0;
+filter: drop-shadow(0 6px 22px rgba(0,0,0,.08));
 }
