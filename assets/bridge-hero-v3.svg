@@ -1,0 +1,91 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Sky gradient -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF6DB"/>
+      <stop offset="55%" stop-color="#FFE8A8"/>
+      <stop offset="100%" stop-color="#FFFDF4"/>
+    </linearGradient>
+
+    <!-- Sun glow -->
+    <radialGradient id="sun" cx="65%" cy="28%" r="35%">
+      <stop offset="0%" stop-color="#FFFDF6" stop-opacity="1"/>
+      <stop offset="60%" stop-color="#FFE9A9" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#FFE19A" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Water gradient -->
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F7F3E2"/>
+      <stop offset="100%" stop-color="#EEE6CB"/>
+    </linearGradient>
+
+    <!-- Golden line -->
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF5C7"/>
+      <stop offset="45%" stop-color="#F1D476"/>
+      <stop offset="100%" stop-color="#C9A018"/>
+    </linearGradient>
+
+    <!-- Soft glow filter -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Far hills -->
+    <linearGradient id="hills" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F4EAD1"/>
+      <stop offset="100%" stop-color="#EAE0C2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background sky -->
+  <rect width="100%" height="100%" fill="url(#sky)"/>
+  <rect y="540" width="100%" height="360" fill="url(#water)"/>
+
+  <!-- Sun glow -->
+  <circle cx="1120" cy="250" r="260" fill="url(#sun)"/>
+
+  <!-- Distant hills -->
+  <path d="M0,540 C250,480 380,500 520,520 C700,545 880,500 1100,515 C1320,530 1450,500 1600,520 L1600,560 L0,560 Z"
+        fill="url(#hills)" opacity="0.75"/>
+
+  <!-- Bridge shadow on water -->
+  <path d="M160,560 C520,520 1080,520 1440,560" stroke="#E7DDBD" stroke-width="18" opacity="0.45" filter="url(#glow)"/>
+
+  <!-- Main bridge deck -->
+  <path d="M180 520 H1420" stroke="url(#gold)" stroke-width="16" stroke-linecap="round" fill="none" filter="url(#glow)"/>
+
+  <!-- Main arches -->
+  <path d="M220 520 C 520 220, 1080 220, 1380 520"
+        stroke="url(#gold)" stroke-width="14" fill="none" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M360 520 C 620 300, 980 300, 1240 520"
+        stroke="url(#gold)" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.85" filter="url(#glow)"/>
+
+  <!-- Pylons -->
+  <g stroke="url(#gold)" stroke-width="14" filter="url(#glow)">
+    <path d="M320 520 L320 460"/>
+    <path d="M1280 520 L1280 460"/>
+  </g>
+
+  <!-- Suspension cables -->
+  <g stroke="url(#gold)" stroke-width="6" filter="url(#glow)">
+    <path d="M400 520 L400 380"/>
+    <path d="M480 520 L480 340"/>
+    <path d="M560 520 L560 310"/>
+    <path d="M640 520 L640 290"/>
+    <path d="M720 520 L720 280"/>
+    <path d="M800 520 L800 280"/>
+    <path d="M880 520 L880 290"/>
+    <path d="M960 520 L960 310"/>
+    <path d="M1040 520 L1040 340"/>
+    <path d="M1120 520 L1120 380"/>
+  </g>
+
+  <!-- Light reflections -->
+  <g stroke="url(#gold)" stroke-width="4" opacity="0.45">
+    <path d="M260 600 C 500 580, 1100 580, 1340 600" />
+    <path d="M300 640 C 520 620, 1080 620, 1300 640" />
+  </g>
+</svg>

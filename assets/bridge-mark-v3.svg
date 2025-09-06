@@ -1,0 +1,30 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="halo" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#FFF7D8"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF4C4"/>
+      <stop offset="45%" stop-color="#F0D274"/>
+      <stop offset="100%" stop-color="#C59E15"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <circle cx="200" cy="200" r="186" fill="url(#halo)"/>
+  <g stroke="url(#gold)" stroke-linecap="round" fill="none" filter="url(#glow)">
+    <path d="M70 260 C 150 150, 250 150, 330 260" stroke-width="12"/>
+    <path d="M90 260 H310" stroke-width="9"/>
+    <g stroke-width="7">
+      <path d="M125 260 L125 205"/>
+      <path d="M165 260 L165 190"/>
+      <path d="M205 260 L205 185"/>
+      <path d="M245 260 L245 190"/>
+      <path d="M285 260 L285 205"/>
+    </g>
+  </g>
+</svg>
