@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>“Filling the Gap” — Private</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="/assets/style.css">
+
+<!-- Security guard: require OTP session -->
+<script>
+(function () {
+try {
+const email = sessionStorage.getItem('email');
+const otp = sessionStorage.getItem('otp');
+if (!email || !otp) {
+window.location.replace('/investors/login.html');
+}
+} catch (e) {
+window.location.replace('/investors/login.html');
+}
+})();
+</script>
+</head>
+<body style="margin:0;">
+<div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; border-bottom:1px solid rgba(0,0,0,.08);">
+<div>“Filling the Gap” — Flagship Brief</div>
+<div>
+<a href="#" id="downloadLink" style="margin-right:12px;">Download PDF</a>
+<a href="#" id="signout" style="opacity:.75;">Sign out</a>
+</div>
+</div>
+
+<div id="pdfWrap" style="height: calc(100vh - 52px);"></div>
+
+<script>
+// The actual PDF file path
+const pdfPath = '/investors/briefs/filling-the-gap.pdf';
+
+(function () {
+// Inject viewer iframe
+var wrap = document.getElementById('pdfWrap');
+var iframe = document.createElement('iframe');
+iframe.src = pdfPath;
+iframe.style.width = '100%';
+iframe.style.height = '100%';
+iframe.style.border = '0';
+wrap.appendChild(iframe);
+
+// Download link
+var dl = document.getElementById('downloadLink');
+if (dl) dl.setAttribute('href', pdfPath);
+
+// Sign out
+var so = document.getElementById('signout');
+if (so) {
+so.addEventListener('click', function (e) {
+e.preventDefault();
+try {
+sessionStorage.removeItem('email');
+sessionStorage.removeItem('otp');
+} catch (e) {}
+window.location.href = '/investors/login.html';
+});
+}
+})();
+</script>
+</body>
+</html>
