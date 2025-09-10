@@ -42,3 +42,13 @@ height: auto;
 margin: 10px 0 0;
 filter: drop-shadow(0 10px 24px rgba(0,0,0,.08));
 }
+/* Investors & Chair tab — subtle emphasis */
+#investorsLink {
+color: #caa21b; /* golden accent */
+font-weight: 600;
+margin-left: 16px; /* gentle separation from other nav items */
+white-space: nowrap;
+}
+#investorsLink:hover {
+opacity: .9;
+}
