@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Positioning Brief — Private</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="/assets/style.css">
+
+<!-- Security guard: require session -->
+<script>
+(function () {
+try {
+const email = sessionStorage.getItem('email');
+const otp = sessionStorage.getItem('otp');
+if (!email || !otp) {
+window.location.replace('/investors/login.html');
+}
+} catch (e) {
+window.location.replace('/investors/login.html');
+}
+})();
+</script>
+</head>
+<body style="margin:0;">
+
+<!-- Top bar with sign out -->
+<div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; border-bottom:1px solid rgba(0,0,0,.08);">
+<div>Positioning Brief</div>
+<div>
+<a href="#" id="downloadLink" style="margin-right:12px;">Download PDF</a>
+<a href="#" id="signout" style="opacity:.75;">Sign out</a>
+</div>
+</div>
+
+<!-- PDF container -->
+<div id="pdfWrap" style="height: calc(100vh - 52px);">
+<!-- iframe is injected by JS only after guard passes -->
+</div>
+
+<script>
+// Where the actual PDF lives
+const pdfPath = '/investors/briefs/positioning-brief.pdf';
+
+// Build the viewer only after the page loads (session already checked above)
+(function () {
+var wrap = document.getElementById('pdfWrap');
+var iframe = document.createElement('iframe');
+iframe.src = pdfPath;
+iframe.style.width = '100%';
+iframe.style.height = '100%';
+iframe.style.border = '0';
+wrap.appendChild(iframe);
+
+// Download link
+var dl = document.getElementById('downloadLink');
+if (dl) dl.setAttribute('href', pdfPath);
+
+// Sign out
+var so = document.getElementById('signout');
+if (so) {
+so.addEventListener('click', function (e) {
+e.preventDefault();
+try {
+sessionStorage.removeItem('email');
+sessionStorage.removeItem('otp');
+} catch (e) {}
+window.location.href = '/investors/login.html';
+});
+}
+})();
+</script>
+</body>
+</html>
