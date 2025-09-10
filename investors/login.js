@@ -45,7 +45,8 @@ document.getElementById("verifyOtp").addEventListener("click", () => {
 const enteredOtp = document.getElementById("otpInput").value.trim();
 if (enteredOtp === otp) {
 status.textContent = "Success! Redirecting…";
-const landing = landingPageByEmail[email] || "/investors/index.html";
+  // NEW LINE: define landing destination
+  const landing = landingPageByEmail[email] || "/investors/index.html";
 window.location.href = landing;
 } else {
 status.textContent = "Invalid code. Please try again.";
