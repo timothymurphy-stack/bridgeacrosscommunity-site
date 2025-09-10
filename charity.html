@@ -17,7 +17,6 @@
       <a href="/index.html">Home</a>
       <a href="/community-one.html">Community One</a>
       <a href="/charity.html">Charity</a>
-      <a href="/investors/login.html">Investors & Chair</a>
       <a href="/contact.html">Contact</a>
       <a id="investorsLink" href="/investors/login.html" rel="nofollow" title="Private — invitation only">Investors & Chair 🔒</a>
     </div>
@@ -53,21 +52,15 @@
 </footer>
   <script>
 (function () {
-// Default goes to the login gate
 var email = sessionStorage.getItem('email');
 var link = document.getElementById('investorsLink');
 if (!link) return;
 var href = '/investors/login.html';
-
-// Where to land if already authenticated
 var landing = {
 'tgmurphyb.sc@gmail.com': '/investors/index.html'
 // 'john.doerr@kpcb.com': '/investors/people/john-doerr.html'
 };
-
-if (email && landing[email]) {
-href = landing[email];
-}
+if (email && landing[email]) href = landing[email];
 link.setAttribute('href', href);
 })();
 </script>
