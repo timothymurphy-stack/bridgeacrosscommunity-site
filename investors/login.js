@@ -1,13 +1,13 @@
 // APPROVED USERS — ONLY these emails can log in
 const approvedUsers = [
 "tgmurphyb.sc@gmail.com", // ← your email
-"john.doerr@kpcb.com" // ← replace with John's real email
+"contacttmurphy@gmail.com" // ← replace with John's real email
 ];
 
 // LANDING PAGES — where each person should arrive after OTP login
 const landingPageByEmail = {
 "tgmurphyb.sc@gmail.com": "/investors/index.html",
-"john.doerr@kpcb.com": "/investors/people/john-doerr.html"
+"contacttmurphy@gmail.com": "/investors/people/john-doerr.html"
 };
 
 document.getElementById("requestCode").addEventListener("click", async () => {
