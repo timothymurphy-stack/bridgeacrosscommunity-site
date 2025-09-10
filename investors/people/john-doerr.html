@@ -21,6 +21,21 @@ window.location.replace('/investors/login.html');
 <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
+  <a href="#" id="signout" style="float:right; font-size:14px; opacity:.75; text-decoration:none;">Sign out</a>
+<script>
+(function () {
+var btn = document.getElementById('signout');
+if (!btn) return;
+btn.addEventListener('click', function (e) {
+e.preventDefault();
+try {
+sessionStorage.removeItem('email');
+sessionStorage.removeItem('otp');
+} catch (e) {}
+window.location.href = '/investors/login.html';
+});
+})();
+</script>
 <main class="container" style="max-width: 900px; margin: 48px auto; padding: 0 16px;">
 <h1 style="margin-bottom:8px;">Private Briefing — John Doerr</h1>
 <p style="font-size:1.05rem; line-height:1.6;">
