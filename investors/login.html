@@ -1,32 +1,76 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Investors Portal — Bridge Across Community</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/assets/style.css">
+<meta charset="utf-8" />
+<title>Investors & Chair — Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<style>
+body {
+margin:0;
+font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial;
+background:#0b0b0b;
+color:#eee;
+display:grid;
+place-items:center;
+min-height:100vh;
+}
+.card {
+width:min(480px,92vw);
+background:#111;
+border:1px solid #222;
+border-radius:12px;
+padding:28px;
+}
+h1 {
+margin:.2rem 0 1rem;
+color:#caa21b;
+font-size:22px;
+}
+label {
+display:block;
+margin:.3rem 0 .15rem;
+color:#bbb;
+}
+input[type=email] {
+width:100%;
+padding:.7rem .8rem;
+border:1px solid #2b2b2b;
+background:#0f0f0f;
+color:#eee;
+border-radius:8px;
+}
+button {
+margin-top:.9rem;
+padding:.65rem .9rem;
+border:1px solid #caa21b;
+background:transparent;
+color:#caa21b;
+border-radius:8px;
+cursor:pointer;
+}
+.msg {
+margin-top:.7rem;
+color:#f08;
+}
+.hint {
+margin-top:.5rem;
+color:#999;
+font-size:13px;
+}
+</style>
 </head>
-<body style="background-color: #f8f9fa; font-family: Arial, sans-serif;">
-
-<main style="max-width: 480px; margin: 80px auto; padding: 20px; background: #fff; box-shadow: 0 0 12px rgba(0,0,0,0.08); border-radius: 8px;">
-<h1 style="margin-bottom: 10px; text-align: center; color: #333;">Investors Portal</h1>
-<p style="margin-bottom: 20px; text-align: center; color: #555;">
-This is a <strong>private, invitation-only</strong> area.<br>
-Please enter your email to receive a one-time access code.
-</p>
-
-<input id="email" type="email" placeholder="your@email.com"
-style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 10px; font-size: 14px;">
-
-<button id="requestCode"
-style="width: 100%; background: #caa21b; color: #fff; padding: 10px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">
-Request Access Code
-</button>
-
-<p id="status" style="margin-top: 15px; font-size: 14px; color: #333; text-align: center;"></p>
-</main>
-
-<!-- Attach login logic -->
+<body>
+<div class="card">
+<h1>Investors &amp; Chair — Private Login</h1>
+<form id="loginForm">
+<label for="email">Enter your approved email</label>
+<input id="email" type="email" placeholder="name@example.com" required />
+<button type="submit">Continue</button>
+<div id="status" class="msg" role="alert" aria-live="polite"></div>
+<p class="hint">Invitation-only. If you believe you should have access, contact the steward.</p>
+</form>
+</div>
 <script src="/investors/login.js"></script>
 </body>
 </html>
