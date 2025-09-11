@@ -1,69 +1,140 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <script>
-// Require a recent OTP session before viewing anything under /investors/*
-(function () {
-try {
-const email = sessionStorage.getItem('email');
-const otp = sessionStorage.getItem('otp');
-if (!email || !otp) {
-window.location.replace('/investors/login.html');
-}
-} catch (e) {
-window.location.replace('/investors/login.html');
-}
-})();
-</script>
 <meta charset="utf-8">
 <title>Investors & Chair — Bridge Across Community</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/assets/style.css">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="/assets/favicon.png">
+<style>
+:root{
+--gold:#caa21b; --ivory:#f7f4ea; --ink:#222; --muted:#4a4a4a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+a{color:inherit;text-decoration:none}
+.hero{
+position:relative; min-height:56vh; display:grid; place-items:center; text-align:center; overflow:hidden;
+background:#000;
+}
+.hero::before{
+content:""; position:absolute; inset:0;
+background:url("/investors/assets/hero.jpg") center/cover no-repeat;
+filter:saturate(1) contrast(1.05) brightness(0.85);
+transform:scale(1.02);
+}
+.hero::after{
+content:""; position:absolute; inset:0;
+background:linear-gradient( to bottom, rgba(0,0,0,.25), rgba(0,0,0,.45));
+}
+.hero-inner{position:relative; padding:8vh 4vw; max-width:1100px}
+.hero h1{
+margin:0 0 .3rem; font-size:clamp(28px,5vw,56px); letter-spacing:.02em; color:var(--gold);
+font-weight:700; text-transform:uppercase;
+}
+.hero p.lede{
+margin:.25rem auto 1.25rem; max-width:900px; color:#f9f3dc; font-size:clamp(16px,2.2vw,22px);
+}
+.gold-dust{
+display:inline-block; padding:.55rem .9rem; border:1px solid rgba(202,162,27,.6);
+color:#ffe9a6; background:rgba(202,162,27,.12); border-radius:6px; backdrop-filter:blur(2px);
+font-size:clamp(14px,1.8vw,18px)
+}
+.wrap{max-width:1100px; margin:0 auto; padding:36px 4vw}
+.section-title{
+color:var(--gold); font-weight:700; font-size:22px; margin:0 0 .75rem
+}
+.docs{
+display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+.doc{
+border:1px solid #e9e6da; border-radius:10px; padding:14px 14px 12px; background:#fff;
+transition:box-shadow .2s ease, transform .15s ease;
+}
+.doc:hover{box-shadow:0 6px 24px rgba(0,0,0,.06); transform:translateY(-1px)}
+.doc small{color:#8c8c8c}
+.doc h3{margin:.1rem 0 .25rem; font-size:18px; color:var(--gold)}
+.lock{font-size:15px; opacity:.9; margin-left:.25rem}
+.foot{opacity:.7; color:#666; font-size:13px; margin-top:22px}
+/* minimal button row if needed later */
+.cta-row{margin-top:16px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
+.btn{border:1px solid var(--gold); color:var(--gold); padding:.55rem .9rem; border-radius:6px}
+.btn:hover{background:rgba(202,162,27,.06)}
+</style>
 </head>
 <body>
-  <a href="#" id="signout" style="float:right; font-size:14px; opacity:.75; text-decoration:none;">Sign out</a>
-<script>
-(function () {
-var btn = document.getElementById('signout');
-if (!btn) return;
-btn.addEventListener('click', function (e) {
-e.preventDefault();
-try {
-sessionStorage.removeItem('email');
-sessionStorage.removeItem('otp');
-} catch (e) {}
-window.location.href = '/investors/login.html';
-});
-})();
-</script>
-<main class="container" style="max-width: 900px; margin: 48px auto; padding: 0 16px;">
-<h1 style="margin-bottom: 8px;">The First Light</h1>
-<section class="briefs-list" style="margin-top:20px;">
-<h2 style="color:#caa21b; font-size:1.5rem; margin-bottom:15px;">Investor & Chair Documents</h2>
-<ul style="list-style:none; padding-left:0; font-size:1.1rem; line-height:1.8;">
-<li><a href="/investors/briefs/positioning-brief.html">📄 Investor Positioning Brief</a></li>
-<li><a href="/investors/briefs/filling-the-gap.html">📄 “Filling the Gap” — Flagship</a></li>
-<li><a href="/investors/briefs/chair-prospectus.html">📄 Chair Prospectus</a></li>
-<li><a href="/investors/briefs/css-strategic-brief.html">📄 CSS Strategic Brief</a></li>
-</ul>
-</section>
-<p style="font-size: 1.05rem; line-height: 1.6;">
-This private, invitation-only space is where we author the pathway from
-<strong>one family</strong> to <strong>five hundred</strong> — with a
-<em>perpetual fund, not spent, held in trust, managed for community</em>.
-</p>
 
-<section style="margin-top: 24px;">
-<h2 style="font-size: 1.15rem;">What lives here</h2>
-<ul style="line-height: 1.7; margin-top: 8px;">
-<li>Positioning Brief (why now; first-in authorship)</li>
-<li>Chair: role, attributes, and OKRs</li>
-<li>“Filling the Gap” — flagship briefing & milestones diagram</li>
-</ul>
-<p style="opacity: .8; margin-top: 10px;">
-(Links appear as we add each document in the next steps.)
-</p>
+<!-- HERO with your image + gold dust line -->
+<header class="hero">
+<div class="hero-inner">
+<h1>Investors &amp; Chair</h1>
+<p class="lede">Bridge Across Community — Cornwall first. Light the first saver. Author the cadence.</p>
+<div class="gold-dust">CSS is the infrastructure of accumulation; BAC is its bridge into community.</div>
+<!-- If you want buttons later:
+<div class="cta-row">
+<a class="btn" href="#docs">View Documents</a>
+<a class="btn" href="/investors/people/chair.html">Chair Prospectus</a>
+</div>
+-->
+</div>
+</header>
+
+<!-- DOCUMENTS -->
+<main class="wrap" id="docs" role="main" aria-label="Investor Documents">
+<h2 class="section-title">Documents</h2>
+<section class="docs">
+<!-- Core 4 -->
+<a class="doc" href="/investors/briefs/positioning-brief.pdf" target="_blank" rel="noopener">
+<small>PDF • Black &amp; White</small>
+<h3>Investor Positioning Brief <span class="lock">🔒</span></h3>
+<p>Twenty years of unmet need → CSS + BAC as the structural answer; Cornwall as template.</p>
+</a>
+
+<a class="doc" href="/investors/briefs/filling-the-gap.pdf" target="_blank" rel="noopener">
+<small>PDF • Black &amp; White</small>
+<h3>“Filling the Gap” — Flagship <span class="lock">🔒</span></h3>
+<p>The mechanism, milestones, human transformation from one household to five hundred.</p>
+</a>
+
+<a class="doc" href="/investors/briefs/chair-prospectus.pdf" target="_blank" rel="noopener">
+<small>PDF • Black &amp; White</small>
+<h3>Chair Prospectus (Role &amp; OKRs) <span class="lock">🔒</span></h3>
+<p>The Chairperson of Heart: attributes, stewardship cadence, 180-day OKRs to First Light.</p>
+</a>
+
+<a class="doc" href="/investors/briefs/css-strategic-brief.pdf" target="_blank" rel="noopener">
+<small>PDF • Black &amp; White</small>
+<h3>CSS Strategic Brief <span class="lock">🔒</span></h3>
+<p>Never-spent model, restoration ratios, eligibility, verification, reporting cadence.</p>
+</a>
+
+<!-- Near-term adds (placeholders now; wire when ready) -->
+<a class="doc" href="/investors/briefs/first-light-plan.pdf" target="_blank" rel="noopener">
+<small>PDF • Black &amp; White</small>
+<h3>First Light — 90-Day Plan <span class="lock">🔒</span></h3>
+<p>From consent to the first restoration loop; weekly cadence and roles.</p>
+</a>
+
+<a class="doc" href="/investors/briefs/milestone-ladder.pdf" target="_blank" rel="noopener">
+<small>PDF • Black &amp; White</small>
+<h3>Milestone Ladder (M1 → M7) <span class="lock">🔒</span></h3>
+<p>The finite sequence that proves momentum and habit formation.</p>
+</a>
+
+<a class="doc" href="/investors/briefs/privacy-compact.pdf" target="_blank" rel="noopener">
+<small>PDF • Black &amp; White</small>
+<h3>Governance &amp; Privacy Compact <span class="lock">🔒</span></h3>
+<p>Data minimisation, dignity by design, independent review cadence.</p>
+</a>
+
+<a class="doc" href="/investors/briefs/replication-outline.pdf" target="_blank" rel="noopener">
+<small>PDF • Black &amp; White</small>
+<h3>Replication Outline <span class="lock">🔒</span></h3>
+<p>Cornwall lighthouse → 500 savers → regional and national roll-out.</p>
+</a>
 </section>
+
+<p class="foot">Private — invitation only. If you need access, contact the steward.</p>
 </main>
 </body>
 </html>
