@@ -2,59 +2,74 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>CSS Strategic Brief — Private</title>
+<title>CSS Strategic Brief | Bridge Across Community</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<link rel="stylesheet" href="/assets/style.css">
-<!-- Security guard -->
-<script>
-(function () {
-try {
-const email = sessionStorage.getItem('email');
-const otp = sessionStorage.getItem('otp');
-if (!email || !otp) window.location.replace('/investors/login.html');
-} catch (e) {
-window.location.replace('/investors/login.html');
-}
-})();
-</script>
+<style>
+:root{--gold:#caa21b; --ink:#222; --muted:#4a4a4a}
+body{margin:40px auto; max-width:860px; padding:0 22px; font:16px/1.65 Georgia, serif; color:var(--ink); background:#fff}
+h1{margin:0 0 .6rem; font:700 28px/1.2 Georgia,serif; color:var(--gold)}
+h2{margin:1.4rem 0 .45rem; font:700 20px/1.25 Georgia,serif; color:var(--gold)}
+p{margin:.5rem 0}
+ul{margin:.4rem 0 .9rem 1.2rem}
+li{margin:.25rem 0}
+.lede{font-style:italic; color:#444}
+hr{border:0; border-top:1px solid #e7e2ce; margin:1.2rem 0}
+.meta{font:13px/1.3 system-ui,Segoe UI,Arial; color:#777; margin-top:1.2rem}
+.badge{display:inline-block; padding:.22rem .5rem; border:1px solid rgba(202,162,27,.55); color:#7a6511; background:rgba(202,162,27,.08); border-radius:5px; font:12px/1.1 system-ui,Segoe UI,Arial}
+code{background:#faf7ee; border:1px solid #efe8cf; padding:.06rem .33rem; border-radius:4px}
+</style>
 </head>
-<body style="margin:0;">
-<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(0,0,0,.08);">
-<div>CSS Strategic Brief</div>
-<div>
-<a href="#" id="downloadLink" style="margin-right:12px;">Download PDF</a>
-<a href="#" id="signout" style="opacity:.75;">Sign out</a>
-</div>
-</div>
+<body>
+<h1>CSS Strategic Brief</h1>
+<p class="lede">A never-spent savings architecture that restores cadence and dignity, beginning with Community ONE.</p>
+<div class="badge">Private — invitation only</div>
 
-<div id="pdfWrap" style="height:calc(100vh - 52px);"></div>
+<h2>Core Premise</h2>
+<p><strong>CSS — Community Savings Solution</strong> treats <em>accumulation</em> as first-class infrastructure. Funds are
+<strong>placed</strong> (advanced) but <strong>not consumed</strong>; they <em>return</em> via co-agreed restoration. This proves the model at
+human scale: one family → a cohort → a community.</p>
 
-<script>
-const pdfVersion = 'v3'; // bump when you replace PDFs again
-const pdfPath = '/investors/briefs/positioning-brief.pdf?' + pdfVersion;
-(function () {
-// Embed viewer
-var wrap = document.getElementById('pdfWrap');
-var iframe = document.createElement('iframe');
-iframe.src = pdfPath;
-iframe.style.width = '100%';
-iframe.style.height = '100%';
-iframe.style.border = '0';
-wrap.appendChild(iframe);
+<h2>Safeguarded Fund (Never-Spent)</h2>
+<ul>
+<li>Capital sits in a safeguarded structure with <strong>clear purpose &amp; restrictions</strong> (never spent; only placed and restored).</li>
+<li><strong>Placement rules:</strong> small, deliberate, verified eligibility; first loop is tightly coached.</li>
+<li><strong>Restoration:</strong> schedule is <em>co-agreed</em> and humanly possible; early loops are short to build cadence.</li>
+</ul>
 
-// Download link
-var dl = document.getElementById('downloadLink');
-if (dl) dl.setAttribute('href', pdfPath);
+<h2>Eligibility &amp; Verification</h2>
+<ul>
+<li><strong>Eligibility signals:</strong> residency in Community ONE, basic documentation, willingness to enter a restoration schedule.</li>
+<li><strong>Verification:</strong> practitioner-led (church/employer/CU) to keep it human, not bureaucratic.</li>
+<li><strong>Safeguards:</strong> privacy by default; minimal data; clear consent; independent oversight.</li>
+</ul>
 
-// Sign out
-var so = document.getElementById('signout');
-if (so) so.addEventListener('click', function (e) {
-e.preventDefault();
-try { sessionStorage.removeItem('email'); sessionStorage.removeItem('otp'); } catch (e) {}
-window.location.href = '/investors/login.html';
-});
-})();
-</script>
+<h2>Placements &amp; Restoration Ratios</h2>
+<ul>
+<li><strong>Advance sizing:</strong> “small to prove, then repeat.” Start low; increase only after observed cadence.</li>
+<li><strong>Ratios:</strong> early loops target short intervals (e.g., weekly/fortnightly) to establish habit and evidence.</li>
+<li><strong>Slippage handling:</strong> pause, re-plan, reduce size; dignity first, theatre never.</li>
+</ul>
+
+<h2>Cadence &amp; Reporting</h2>
+<ul>
+<li><strong>Weekly:</strong> Chair + steward + practitioner review a one-page view: new consents, placements, restorations, issues.</li>
+<li><strong>Monthly:</strong> publish a quiet internal update: households in cadence, restoration rate, issues resolved.</li>
+<li><strong>Quarterly:</strong> oversight review and sign-off; privacy compact audit ticks.</li>
+</ul>
+
+<h2>Community ONE → Replication</h2>
+<p>Community ONE is the lighthouse. We refine quietly; then add a few more communities; then regional; <em>national later</em>.
+Cornwall remains the template. The pattern is <code>consent → placement → restoration → cadence → habit → replication</code>.</p>
+
+<h2>Interfaces</h2>
+<ul>
+<li><strong>Churches &amp; employers:</strong> trusted on-ramps; referral + pastoral support.</li>
+<li><strong>Credit Union / financial partner:</strong> placement &amp; restoration rails; safeguarding.</li>
+<li><strong>BAC:</strong> the bridge — onboarding, communication, and replication playbook.</li>
+</ul>
+
+<hr>
+<p class="meta">Bridge Across Community · CSS is the infrastructure; BAC is its bridge into community.</p>
 </body>
 </html>
