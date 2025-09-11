@@ -2,74 +2,46 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Positioning Brief — Private</title>
+<title>Investor Positioning Brief — v4 | Bridge Across Community</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<link rel="stylesheet" href="/assets/style.css">
-
-<!-- Security guard: require session -->
-<script>
-(function () {
-try {
-const email = sessionStorage.getItem('email');
-const otp = sessionStorage.getItem('otp');
-if (!email || !otp) {
-window.location.replace('/investors/login.html');
-}
-} catch (e) {
-window.location.replace('/investors/login.html');
-}
-})();
-</script>
+<style>
+:root{--gold:#caa21b; --ink:#222; --muted:#4a4a4a}
+body{margin:40px auto; max-width:860px; padding:0 22px; font:16px/1.65 Georgia, serif; color:var(--ink); background:#fff}
+h1{margin:0 0 .6rem; font:700 28px/1.2 Georgia,serif; color:var(--gold)}
+h2{margin:1.4rem 0 .45rem; font:700 20px/1.25 Georgia,serif; color:var(--gold)}
+p{margin:.5rem 0}
+.lede{font-style:italic; color:#444}
+hr{border:0; border-top:1px solid #e7e2ce; margin:1.2rem 0}
+.meta{font:13px/1.3 system-ui,Segoe UI,Arial; color:#777; margin-top:1.2rem}
+.badge{display:inline-block; padding:.22rem .5rem; border:1px solid rgba(202,162,27,.55); color:#7a6511; background:rgba(202,162,27,.08); border-radius:5px; font:12px/1.1 system-ui,Segoe UI,Arial}
+</style>
 </head>
-<body style="margin:0;">
+<body>
+<h1>Investor Positioning Brief — v4</h1>
+<p class="lede">Twenty years of calls to reach the financially excluded; the structural answer begins in Cornwall.</p>
+<div class="badge">Private — invitation only</div>
 
-<!-- Top bar with sign out -->
-<div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; border-bottom:1px solid rgba(0,0,0,.08);">
-<div>Positioning Brief</div>
-<div>
-<a href="#" id="downloadLink" style="margin-right:12px;">Download PDF</a>
-<a href="#" id="signout" style="opacity:.75;">Sign out</a>
-</div>
-</div>
+<h2>Genesis: The Call That Went Unanswered</h2>
+<p>For over two decades, leaders have called for innovation to reach the financially excluded. In 2001, Ron Sandler’s
+landmark review demanded new models for those left behind. Years later, during the WONGA crisis, Archbishop Justin
+Welby challenged the financial system to act in favour of the poorest. And yet, the gap remained.</p>
 
-<!-- PDF container -->
-<div id="pdfWrap" style="height: calc(100vh - 52px);">
-<!-- iframe is injected by JS only after guard passes -->
-</div>
+<h2>Enter CSS and BAC</h2>
+<p><strong>CSS — Community Savings Solution</strong> builds the infrastructure of accumulation where the status quo has engineered
+depletion. <strong>BAC — Bridge Across Community</strong> is the distribution and onboarding channel through churches, employers,
+and community organisations. Cornwall’s <em>Community ONE</em> is the template for replication.</p>
 
-<script>
-// Where the actual PDF lives
-const pdfVersion = 'v3'; // bump when you replace PDFs again
-const pdfPath = '/investors/briefs/positioning-brief.pdf?' + pdfVersion;
+<h2>The First Light</h2>
+<p>John Doerr’s OKR philosophy recognises that every great system begins with a single defining action. For us, that action
+is the <strong>Chairperson of Heart</strong> standing at the level of <em>Saver One</em> — the first family — quietly, with fierce intent to
+see them begin. That act authors the cadence of credibility.</p>
 
-// Build the viewer only after the page loads (session already checked above)
-(function () {
-var wrap = document.getElementById('pdfWrap');
-var iframe = document.createElement('iframe');
-iframe.src = pdfPath;
-iframe.style.width = '100%';
-iframe.style.height = '100%';
-iframe.style.border = '0';
-wrap.appendChild(iframe);
+<h2>Finite, Defining Milestones</h2>
+<p>Momentum becomes observable and trusted early: M1 → consent &amp; safeguards; M1.5 → first advance; M2 → restoration cadence
+demonstrated; onward to habit formation. One household becomes ten, then fifty, then five hundred. Cornwall proves; replication follows.</p>
 
-// Download link
-var dl = document.getElementById('downloadLink');
-if (dl) dl.setAttribute('href', pdfPath);
-
-// Sign out
-var so = document.getElementById('signout');
-if (so) {
-so.addEventListener('click', function (e) {
-e.preventDefault();
-try {
-sessionStorage.removeItem('email');
-sessionStorage.removeItem('otp');
-} catch (e) {}
-window.location.href = '/investors/login.html';
-});
-}
-})();
-</script>
+<hr>
+<p class="meta">Bridge Across Community · CSS is the infrastructure; BAC is its bridge into community.</p>
 </body>
 </html>
