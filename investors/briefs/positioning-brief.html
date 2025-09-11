@@ -40,7 +40,8 @@ window.location.replace('/investors/login.html');
 
 <script>
 // Where the actual PDF lives
-const pdfPath = '/investors/briefs/positioning-brief.pdf?v=3';
+const pdfVersion = 'v3'; // bump when you replace PDFs again
+const pdfPath = '/investors/briefs/positioning-brief.pdf?' + pdfVersion;
 
 // Build the viewer only after the page loads (session already checked above)
 (function () {
