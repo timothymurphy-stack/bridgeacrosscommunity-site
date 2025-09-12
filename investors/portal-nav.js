@@ -41,8 +41,15 @@ const css = `
 }
 
 /* Add breathing room below nav bar */
+/* Add breathing room below nav bar */
 main.container { margin-top: 60px; }
-body h1:first-of-type { margin-top: 60px !important; }
+body h1:first-of-type {
+margin-top: 60px !important;
+font-size: 2.2rem; /* bigger */
+font-weight: 600; /* semi-bold, elegant */
+color: #7a6511; /* golden brown tint */
+text-align: center; /* optional: centered for class */
+}
 `;
 
 const style = document.createElement("style");
