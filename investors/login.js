@@ -1,21 +1,27 @@
 // --- TEMPORARY FRONT-END GATE (not real security) ---
 // Add approved emails here (lowercase). All land on /investors/index.html
 const ALLOW = {
-"tgmurphyb.sc@gmail.com": "/investors/index.html",
+"your.email@example.com": "/investors/index.html",
 "christophersswain@googlemail.com": "/investors/index.html",
 // add more like:
-// "someone@example.com": "/investors/index.html",
+// "john.doerr@example.com": "/investors/index.html",
+// "tim.smit@example.com": "/investors/index.html"
 };
 
+// --- SESSION HANDLING ---
 // session length (hours)
 const SESSION_HOURS = 12;
 
 function setSession(email){
-const until = Date.now() + SESSION_HOURS*60*60*1000;
+const until = Date.now() + SESSION_HOURS * 60 * 60 * 1000;
+// write to BOTH localStorage and sessionStorage
+localStorage.setItem("bac_user", email);
+localStorage.setItem("bac_until", String(until));
 sessionStorage.setItem("bac_user", email);
 sessionStorage.setItem("bac_until", String(until));
 }
 
+// --- LOGIN FORM HANDLER ---
 (function wire(){
 const form = document.getElementById("loginForm");
 const status = document.getElementById("status");
