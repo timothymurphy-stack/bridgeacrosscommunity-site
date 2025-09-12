@@ -41,8 +41,8 @@ const css = `
 }
 
 /* Add breathing room below nav bar */
-main.container { margin-top: 28px; }
-body h1:first-of-type { margin-top: 28px !important; }
+main.container { margin-top: 60px; }
+body h1:first-of-type { margin-top: 60px !important; }
 `;
 
 const style = document.createElement("style");
