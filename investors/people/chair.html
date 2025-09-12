@@ -2,6 +2,19 @@
 <html lang="en">
 <head>
   <script>
+(function(){
+try{
+const u = sessionStorage.getItem("bac_user");
+const t = Number(sessionStorage.getItem("bac_until")||0);
+if(!u || Date.now()>t){
+location.replace("/investors/login.html");
+}
+}catch(e){
+location.replace("/investors/login.html");
+}
+})();
+</script>
+  <script>
 // Require a recent OTP session before viewing anything under /investors/*
 (function () {
 try {
