@@ -2,75 +2,112 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Investors & Chair — Login</title>
+<title>Investors & Chair — Private Login</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex,nofollow" />
 <style>
-body {
-margin:0;
-font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial;
-background:#0b0b0b;
-color:#eee;
-display:grid;
-place-items:center;
-min-height:100vh;
+:root{
+--gold:#caa21b; /* house gold */
+--ink:#222; /* primary text */
+--ivory:#faf8f2; /* page background */
+--card:#ffffff; /* card background */
+--line:#e8e2cf; /* subtle borders */
+--muted:#6f6a5a; /* helper text */
+--error:#b32727;
 }
-.card {
-width:min(480px,92vw);
-background:#111;
-border:1px solid #222;
-border-radius:12px;
-padding:28px;
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0; background:var(--ivory);
+font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial;
+color:var(--ink);
+display:grid; place-items:center; padding:24px;
 }
-h1 {
-margin:.2rem 0 1rem;
-color:#caa21b;
-font-size:22px;
+.wrap{width:min(520px,92vw)}
+.brand{
+display:flex; align-items:center; gap:.6rem; margin-bottom:14px;
+color:var(--ink); text-decoration:none;
 }
-label {
-display:block;
-margin:.3rem 0 .15rem;
-color:#bbb;
+.brand .mark{
+width:28px; height:28px; border-radius:50%;
+border:1px solid var(--gold); position:relative; flex:0 0 28px;
 }
-input[type=email] {
-width:100%;
-padding:.7rem .8rem;
-border:1px solid #2b2b2b;
-background:#0f0f0f;
-color:#eee;
-border-radius:8px;
+.brand .mark::after{
+content:""; position:absolute; inset:7px 4px auto 4px; height:1px;
+background:var(--gold); transform:skewX(-12deg);
 }
-button {
-margin-top:.9rem;
-padding:.65rem .9rem;
-border:1px solid #caa21b;
-background:transparent;
-color:#caa21b;
-border-radius:8px;
-cursor:pointer;
+.brand span{font-weight:600; letter-spacing:.2px}
+.card{
+background:var(--card); border:1px solid var(--line); border-radius:14px;
+box-shadow:0 6px 20px rgba(0,0,0,.06);
+padding:28px 24px 22px;
 }
-.msg {
-margin-top:.7rem;
-color:#f08;
+h1{
+margin:0 0 10px; color:var(--gold);
+font:700 22px/1.25 Georgia,serif;
 }
-.hint {
-margin-top:.5rem;
-color:#999;
-font-size:13px;
+p.lede{margin:.2rem 0 1rem; color:var(--muted)}
+label{display:block; margin:.35rem 0 .25rem; font-weight:600}
+input[type=email]{
+width:100%; padding:.75rem .9rem; border:1px solid var(--line);
+border-radius:10px; background:#fff; color:var(--ink);
+outline:none; transition:border-color .15s, box-shadow .15s;
+}
+input[type=email]:focus{
+border-color:rgba(202,162,27,.9);
+box-shadow:0 0 0 3px rgba(202,162,27,.18);
+}
+button{
+margin-top:.9rem; padding:.7rem 1rem; width:100%;
+border:1px solid var(--gold); color:var(--gold); background:#fff;
+border-radius:10px; cursor:pointer; font-weight:600;
+transition:transform .04s ease, box-shadow .15s, background .15s, color .15s;
+}
+button:hover{box-shadow:0 6px 14px rgba(202,162,27,.15)}
+button:active{transform:translateY(1px)}
+.msg{margin-top:.6rem; color:var(--error); min-height:1.25em}
+.hint{margin-top:.5rem; color:var(--muted); font-size:13px}
+.foot{
+margin-top:14px; display:flex; justify-content:space-between; align-items:center;
+color:var(--muted); font-size:13px;
+}
+.foot a{color:var(--muted); text-decoration:underline}
+@media (prefers-color-scheme: dark){
+/* optional: keep it classy in dark mode too */
+body{background:#0e0e0c; color:#e9e5db}
+.card{background:#141312; border-color:#26231d}
+input[type=email]{background:#100f0c; border-color:#26231d; color:#e9e5db}
+button{background:#141312}
+.hint,.foot{color:#b7b0a0}
 }
 </style>
 </head>
 <body>
-<div class="card">
-<h1>Investors &amp; Chair — Private Login</h1>
-<form id="loginForm">
-<label for="email">Enter your approved email</label>
-<input id="email" type="email" placeholder="name@example.com" required />
+<div class="wrap">
+<a class="brand" href="/">
+<div class="mark" aria-hidden="true"></div>
+<span>Bridge Across Community</span>
+</a>
+
+<div class="card" role="region" aria-labelledby="title">
+<h1 id="title">Investors &amp; Chair — Private Login</h1>
+<p class="lede">Invitation-only access. Enter your approved email to continue.</p>
+
+<form id="loginForm" novalidate>
+<label for="email">Approved email</label>
+<input id="email" type="email" placeholder="name@example.com" autocomplete="email" required />
 <button type="submit">Continue</button>
 <div id="status" class="msg" role="alert" aria-live="polite"></div>
-<p class="hint">Invitation-only. If you believe you should have access, contact the steward.</p>
+<p class="hint">If you believe you should have access, contact the steward.</p>
 </form>
+
+<div class="foot">
+<span>Private area &middot; no indexing</span>
+<a href="#" onclick="sessionStorage.clear(); localStorage.clear(); location.href='/investors/login.html'; return false;">Clear session</a>
 </div>
+</div>
+</div>
+
 <script src="/investors/login.js"></script>
 </body>
 </html>
