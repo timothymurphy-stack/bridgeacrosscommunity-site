@@ -47,7 +47,8 @@ bar.className = "bac-nav";
 bar.innerHTML = `
 <div class="in">
 <div class="left">
-<a href="/investors/" aria-label="Back to library">← Back</a>
+<a href="/" class="logo">Bridge Across Community</a>
+<a href="/investors/" aria-label="Back to library">← Library</a>
 </div>
 <div class="title">
 ${BRIEFS[idx].title}<div class="sub">${idx+1} of ${BRIEFS.length}</div>
@@ -57,6 +58,7 @@ ${BRIEFS[idx].title}<div class="sub">${idx+1} of ${BRIEFS.length}</div>
 <a ${next?`href="${next.path}"`:'class="disabled"'} aria-label="Next brief">Next →</a>
 </div>
 </div>`;
+
 document.body.prepend(bar);
 
 // keyboard arrows
