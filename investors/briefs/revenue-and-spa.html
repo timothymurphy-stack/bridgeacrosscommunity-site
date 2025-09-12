@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <script>
+(function(){
+try{
+const u = sessionStorage.getItem("bac_user");
+const t = Number(sessionStorage.getItem("bac_until")||0);
+if(!u || Date.now()>t){
+location.replace("/investors/login.html");
+}
+}catch(e){
+location.replace("/investors/login.html");
+}
+})();
+</script>
 <meta charset="utf-8">
 <title>Deeper Revenue Streams & Sales Promotions Agency | Bridge Across Community</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
