@@ -9,102 +9,135 @@
 :root{
 --gold:#caa21b; /* house gold */
 --ink:#222; /* primary text */
---ivory:#faf8f2; /* page background */
+--ivory:#f6f1e3; /* warmer ivory */
 --card:#ffffff; /* card background */
---line:#e8e2cf; /* subtle borders */
---muted:#6f6a5a; /* helper text */
---error:#b32727;
+--line:#e7dfc7; /* subtle borders */
+--shadow:0 10px 30px rgba(0,0,0,.08);
 }
 *{box-sizing:border-box}
 html,body{height:100%}
+
+/* Page background: warm gradient + subtle bridge watermark */
 body{
-margin:0; background:var(--ivory);
-font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial;
+margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial;
 color:var(--ink);
-display:grid; place-items:center; padding:24px;
+background:
+radial-gradient(1200px 800px at 70% 0%, rgba(202,162,27,.12), transparent 60%),
+linear-gradient(180deg, #f9f5ea 0%, var(--ivory) 100%);
+display:grid; place-items:center; padding:28px;
 }
-.wrap{width:min(520px,92vw)}
+
+.wrap{width:min(520px,92vw); position:relative}
+
+/* Watermark bridge (pure CSS/SVG) */
+.watermark{
+position:absolute; inset:-80px -40px auto -40px; pointer-events:none; opacity:.14;
+filter:blur(.2px); /* subtle soften */
+transform:translateY(-14px);
+}
+.watermark svg{width:100%; height:auto; display:block}
+
+/* Brand header */
 .brand{
-display:flex; align-items:center; gap:.6rem; margin-bottom:14px;
-color:var(--ink); text-decoration:none;
+display:flex; align-items:center; gap:.6rem; margin-bottom:16px;
+text-decoration:none; color:var(--ink);
 }
 .brand .mark{
 width:28px; height:28px; border-radius:50%;
-border:1px solid var(--gold); position:relative; flex:0 0 28px;
+background:#fff; border:1px solid var(--gold); position:relative; flex:0 0 28px;
+box-shadow:0 1px 0 rgba(255,255,255,.6) inset;
 }
-.brand .mark::after{
-content:""; position:absolute; inset:7px 4px auto 4px; height:1px;
-background:var(--gold); transform:skewX(-12deg);
+/* gold bridge arc inside the mark */
+.brand .mark::before{
+content:""; position:absolute; left:5px; right:5px; bottom:11px; height:2px;
+background:var(--gold); transform:skewX(-10deg);
+box-shadow:0 -6px 0 -5px var(--gold), 0 -3px 0 -5px var(--gold);
 }
-.brand span{font-weight:600; letter-spacing:.2px}
+.brand span{
+font:700 15px/1.1 Georgia,serif; letter-spacing:.2px;
+}
+
+/* Card */
 .card{
-background:var(--card); border:1px solid var(--line); border-radius:14px;
-box-shadow:0 6px 20px rgba(0,0,0,.06);
-padding:28px 24px 22px;
+background:var(--card); border:1px solid var(--line); border-radius:16px;
+box-shadow:var(--shadow);
+padding:28px 24px 24px;
 }
 h1{
-margin:0 0 10px; color:var(--gold);
+margin:0 0 12px; color:var(--gold);
 font:700 22px/1.25 Georgia,serif;
 }
-p.lede{margin:.2rem 0 1rem; color:var(--muted)}
-label{display:block; margin:.35rem 0 .25rem; font-weight:600}
+/* minimalist subtitle (kept concise for elegance) */
+.lede{margin:.25rem 0 1.1rem; color:#6e6656; font-size:14px}
+
+label{display:block; margin:.35rem 0 .3rem; font-weight:600}
 input[type=email]{
-width:100%; padding:.75rem .9rem; border:1px solid var(--line);
-border-radius:10px; background:#fff; color:var(--ink);
+width:100%; padding:.78rem .95rem; border:1px solid var(--line);
+border-radius:12px; background:#fff; color:var(--ink);
 outline:none; transition:border-color .15s, box-shadow .15s;
 }
 input[type=email]:focus{
 border-color:rgba(202,162,27,.9);
 box-shadow:0 0 0 3px rgba(202,162,27,.18);
 }
+
 button{
-margin-top:.9rem; padding:.7rem 1rem; width:100%;
-border:1px solid var(--gold); color:var(--gold); background:#fff;
-border-radius:10px; cursor:pointer; font-weight:600;
-transition:transform .04s ease, box-shadow .15s, background .15s, color .15s;
+margin-top:1rem; padding:.8rem 1.05rem; width:100%;
+border:1px solid var(--gold); color:#fff; background:var(--gold);
+border-radius:12px; cursor:pointer; font-weight:700;
+letter-spacing:.2px;
+transition:transform .04s ease, box-shadow .15s, filter .15s;
+box-shadow:0 6px 14px rgba(202,162,27,.22);
 }
-button:hover{box-shadow:0 6px 14px rgba(202,162,27,.15)}
+button:hover{filter:brightness(1.03)}
 button:active{transform:translateY(1px)}
-.msg{margin-top:.6rem; color:var(--error); min-height:1.25em}
-.hint{margin-top:.5rem; color:var(--muted); font-size:13px}
-.foot{
-margin-top:14px; display:flex; justify-content:space-between; align-items:center;
-color:var(--muted); font-size:13px;
-}
-.foot a{color:var(--muted); text-decoration:underline}
+
+.msg{margin-top:.7rem; color:#b32727; min-height:1.25em}
+
+/* Dark mode polish */
 @media (prefers-color-scheme: dark){
-/* optional: keep it classy in dark mode too */
-body{background:#0e0e0c; color:#e9e5db}
-.card{background:#141312; border-color:#26231d}
-input[type=email]{background:#100f0c; border-color:#26231d; color:#e9e5db}
-button{background:#141312}
-.hint,.foot{color:#b7b0a0}
+body{background:linear-gradient(180deg,#100f0c 0%, #0e0d0b 100%)}
+.card{background:#141312; border-color:#2a271f}
+.brand .mark{background:#141312}
+.lede{color:#b9b29f}
+input[type=email]{background:#100f0c; border-color:#2a271f; color:#eee}
+button{background:#caa21b; color:#100f0c}
 }
 </style>
 </head>
 <body>
 <div class="wrap">
+<!-- Elegant brand button with visible mark -->
 <a class="brand" href="/">
 <div class="mark" aria-hidden="true"></div>
 <span>Bridge Across Community</span>
 </a>
 
+<!-- Subtle bridge watermark behind card -->
+<div class="watermark" aria-hidden="true">
+<svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
+<path d="M20 170 C 200 60, 600 60, 780 170" fill="none" stroke="#caa21b" stroke-width="4"/>
+<g stroke="#caa21b" stroke-width="2">
+<line x1="120" y1="170" x2="120" y2="120"/>
+<line x1="220" y1="170" x2="220" y2="110"/>
+<line x1="320" y1="170" x2="320" y2="100"/>
+<line x1="480" y1="170" x2="480" y2="100"/>
+<line x1="580" y1="170" x2="580" y2="110"/>
+<line x1="680" y1="170" x2="680" y2="120"/>
+</g>
+</svg>
+</div>
+
 <div class="card" role="region" aria-labelledby="title">
 <h1 id="title">Investors &amp; Chair — Private Login</h1>
-<p class="lede">Invitation-only access. Enter your approved email to continue.</p>
+<p class="lede">Invitation-only access.</p>
 
 <form id="loginForm" novalidate>
 <label for="email">Approved email</label>
 <input id="email" type="email" placeholder="name@example.com" autocomplete="email" required />
 <button type="submit">Continue</button>
 <div id="status" class="msg" role="alert" aria-live="polite"></div>
-<p class="hint">If you believe you should have access, contact the steward.</p>
 </form>
-
-<div class="foot">
-<span>Private area &middot; no indexing</span>
-<a href="#" onclick="sessionStorage.clear(); localStorage.clear(); location.href='/investors/login.html'; return false;">Clear session</a>
-</div>
 </div>
 </div>
 
