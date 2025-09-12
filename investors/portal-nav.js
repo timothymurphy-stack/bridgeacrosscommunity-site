@@ -27,6 +27,7 @@ const css = `
 .bac-nav{position:sticky; top:0; z-index:999; background:#fff9ef; border-bottom:1px solid #e7e2ce;}
 .bac-nav .in{max-width:860px; margin:0 auto; padding:10px 20px; display:flex; gap:10px; align-items:center; justify-content:space-between; font:14px/1.2 system-ui,Segoe UI,Arial}
 .bac-nav a{color:#7a6511; text-decoration:none; border:1px solid rgba(202,162,27,.5); padding:.4rem .6rem; border-radius:7px; background:#fff; display:inline-flex; align-items:center; gap:.35rem}
+.bac-nav a.logo{font-weight:bold; border:none; background:none; font-size:15px}
 .bac-nav a:hover{background:#fff6dd}
 .bac-nav .title{flex:1; text-align:center; color:#6a5b14}
 .bac-nav .sub{font-size:12px; color:#8b7b2b}
