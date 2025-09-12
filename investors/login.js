@@ -1,7 +1,7 @@
 // --- TEMPORARY FRONT-END GATE (not real security) ---
 // Add approved emails here (lowercase). All land on /investors/index.html
 const ALLOW = {
-"your.email@example.com": "/investors/index.html",
+"tgmurphyb.sc@gmail.com": "/investors/index.html",
 "christophersswain@googlemail.com": "/investors/index.html",
 // add more like:
 // "john.doerr@example.com": "/investors/index.html",
