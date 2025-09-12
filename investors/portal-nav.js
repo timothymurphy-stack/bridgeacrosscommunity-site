@@ -39,8 +39,7 @@ const css = `
 .bac-nav .title{color:#d1bd64}
 .bac-nav .sub{color:#a79349}
 }
-/* Push down page content so it doesn't clash with sticky nav */
-body { padding-top: 70px; }`;
+`;
 const style = document.createElement("style");
 style.textContent = css;
 document.head.appendChild(style);
