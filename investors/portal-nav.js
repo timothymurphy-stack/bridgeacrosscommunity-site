@@ -38,8 +38,13 @@ const css = `
 .bac-nav a:hover{background:#1a1916}
 .bac-nav .title{color:#d1bd64}
 .bac-nav .sub{color:#a79349}
-}main.container { margin-top: 40px; }
+}
+
+/* Add breathing room below nav bar */
+main.container { margin-top: 28px; }
+body h1:first-of-type { margin-top: 28px !important; }
 `;
+
 const style = document.createElement("style");
 style.textContent = css;
 document.head.appendChild(style);
