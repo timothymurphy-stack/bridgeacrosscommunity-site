@@ -1,141 +1,117 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>Investors & Chair — Private Login</title>
+<meta charset="utf-8">
+<title>Investors & Chair Login | Bridge Across Community</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex,nofollow" />
+
 <style>
-:root{
---gold:#caa21b; /* house gold */
---gold-strong:#d4af37; /* brighter gold */
---ink:#222; /* primary text */
---ivory:#f6f1e3; /* warmer ivory */
---card:#ffffff; /* card background */
---line:#e7dfc7; /* subtle borders */
---shadow:0 10px 30px rgba(0,0,0,.08);
---muted:#6f6a5a;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-
-/* Page background */
 body{
-margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial;
-color:var(--ink);
-background:
-radial-gradient(1200px 800px at 70% 0%, rgba(202,162,27,.12), transparent 60%),
-linear-gradient(180deg, #f9f5ea 0%, var(--ivory) 100%);
-display:grid; place-items:center; padding:28px;
+margin:0;
+font-family: "Segoe UI", system-ui, sans-serif;
+background: #000;
+color:#fff;
 }
 
-.wrap{width:min(520px,92vw); position:relative}
-
-/* Watermark bridge */
-.watermark{
-position:absolute; inset:-80px -40px auto -40px; pointer-events:none; opacity:.14;
-filter:blur(.2px);
-transform:translateY(-14px);
-}
-.watermark svg{width:100%; height:auto; display:block}
-
-/* Brand header */
-.brand{
-display:flex; align-items:center; gap:.6rem; margin-bottom:16px;
-text-decoration:none; color:var(--ink);
-}
-.brand .mark{
-width:32px; height:32px; border-radius:50%;
-background:var(--gold-strong); /* solid gold fill */
-border:1px solid var(--gold-strong);
-flex:0 0 32px;
-box-shadow:0 1px 0 rgba(255,255,255,.3) inset, 0 2px 6px rgba(0,0,0,.2);
-}
-.brand span{
-font:700 15px/1.1 Georgia,serif; letter-spacing:.2px;
-}
-
-/* Card */
-.card{
-background:var(--card); border:1px solid var(--line); border-radius:16px;
-box-shadow:var(--shadow);
-padding:28px 24px 24px;
-}
-h1{
-margin:0 0 10px; color:var(--gold);
-font:700 22px/1.25 Georgia,serif;
+.hero{
+min-height:100vh;
+background:url('/assets/bridge-golden.jpg') center/cover no-repeat;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
+padding:0 1rem;
 }
-.lede{margin:.25rem 0 1.1rem; color:var(--muted); font-size:14px; text-align:center}
 
-label{display:block; margin:.35rem 0 .3rem; font-weight:600}
-input[type=email]{
-width:100%; padding:.78rem .95rem; border:1px solid var(--line);
-border-radius:12px; background:#fff; color:var(--ink);
-outline:none; transition:border-color .15s, box-shadow .15s;
+.hero h1{
+font-size:38px;
+font-weight:700;
+color:#d4af37; /* gold */
+text-transform:uppercase;
+letter-spacing:2px;
+margin:0 0 8px;
+text-shadow:0 0 6px rgba(0,0,0,0.4); /* subtle lift */
 }
-input[type=email]:focus{
-border-color:rgba(202,162,27,.9);
-box-shadow:0 0 0 3px rgba(202,162,27,.18);
+
+.hero p.tagline{
+font-size:16px;
+font-style:italic;
+color:#fff; /* white whisper */
+margin:0 0 28px;
+}
+
+.login-box{
+background:rgba(0,0,0,.65);
+padding:28px;
+border-radius:10px;
+max-width:360px;
+width:100%;
+box-shadow:0 6px 16px rgba(0,0,0,.45);
+}
+
+.login-box h2{
+font-size:20px;
+margin:0 0 16px;
+color:#d4af37;
+}
+
+input[type=email]{
+width:100%;
+padding:10px;
+margin:0 0 14px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:14px;
 }
 
 button{
-margin-top:1rem; padding:.8rem 1.05rem; width:100%;
-border:1px solid var(--gold); color:#fff; background:var(--gold);
-border-radius:12px; cursor:pointer; font-weight:700;
-letter-spacing:.2px;
-transition:transform .04s ease, box-shadow .15s, filter .15s;
-box-shadow:0 6px 14px rgba(202,162,27,.22);
+width:100%;
+background:#d4af37;
+color:#000;
+font-weight:600;
+padding:10px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+transition:background .2s;
 }
-button:hover{filter:brightness(1.03)}
-button:active{transform:translateY(1px)}
+button:hover{ background:#c19d2c; }
 
-.msg{margin-top:.7rem; color:#b32727; min-height:1.25em; text-align:center}
-
-/* Dark mode */
-@media (prefers-color-scheme: dark){
-body{background:linear-gradient(180deg,#100f0c 0%, #0e0d0b 100%)}
-.card{background:#141312; border-color:#2a271f}
-.brand .mark{background:var(--gold-strong)}
-.lede{color:#b9b29f}
-input[type=email]{background:#100f0c; border-color:#2a271f; color:#eee}
-button{background:#caa21b; color:#100f0c}
+.note{
+margin-top:16px;
+font-size:13px;
+opacity:.8;
 }
+
+.back-home{
+position:absolute;
+top:14px;
+left:14px;
+color:#fff;
+font-size:14px;
+text-decoration:none;
+opacity:.8;
+}
+.back-home:hover{opacity:1}
 </style>
 </head>
 <body>
-<div class="wrap">
-<!-- Elegant brand button with SOLID GOLD mark -->
-<a class="brand" href="/">
-<div class="mark" aria-hidden="true"></div>
-<span>Bridge Across Community</span>
-</a>
 
-<!-- Subtle bridge watermark -->
-<div class="watermark" aria-hidden="true">
-<svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
-<path d="M20 170 C 200 60, 600 60, 780 170" fill="none" stroke="#caa21b" stroke-width="4"/>
-<g stroke="#caa21b" stroke-width="2">
-<line x1="120" y1="170" x2="120" y2="120"/>
-<line x1="220" y1="170" x2="220" y2="110"/>
-<line x1="320" y1="170" x2="320" y2="100"/>
-<line x1="480" y1="170" x2="480" y2="100"/>
-<line x1="580" y1="170" x2="580" y2="110"/>
-<line x1="680" y1="170" x2="680" y2="120"/>
-</g>
-</svg>
-</div>
+<a href="/" class="back-home">← Bridge Across Community</a>
 
-<div class="card" role="region" aria-labelledby="title">
-<h1 id="title">Investors &amp; Chair — Private Login</h1>
-<p class="lede">Invitation-only access.</p>
+<div class="hero">
+<h1>INVESTORS &amp; CHAIR</h1>
+<p class="tagline">Bridge Across Community — Cornwall first. Light the first saver. Author the cadence.</p>
 
-<form id="loginForm" novalidate>
-<label for="email">Approved email</label>
-<input id="email" type="email" placeholder="name@example.com" autocomplete="email" required />
-<button type="submit">Continue</button>
-<div id="status" class="msg" role="alert" aria-live="polite"></div>
+<div class="login-box">
+<h2>Private Login</h2>
+<form id="loginForm">
+<input type="email" id="email" placeholder="Enter your email" required>
+<button type="submit">Enter</button>
 </form>
+<div class="note">Invitation only. If you believe you should have access, contact the steward.</div>
 </div>
 </div>
 
