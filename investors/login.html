@@ -8,7 +8,7 @@
 <style>
 :root{
 --gold:#caa21b; /* house gold */
---gold-strong:#d4af37; /* brighter gold for highlights */
+--gold-strong:#d4af37; /* brighter gold */
 --ink:#222; /* primary text */
 --ivory:#f6f1e3; /* warmer ivory */
 --card:#ffffff; /* card background */
@@ -46,12 +46,11 @@ text-decoration:none; color:var(--ink);
 }
 .brand .mark{
 width:32px; height:32px; border-radius:50%;
-background:#fff; border:1px solid var(--gold); position:relative; flex:0 0 32px;
-box-shadow:0 1px 0 rgba(255,255,255,.6) inset;
-display:grid; place-items:center; overflow:hidden;
+background:var(--gold-strong); /* solid gold fill */
+border:1px solid var(--gold-strong);
+flex:0 0 32px;
+box-shadow:0 1px 0 rgba(255,255,255,.3) inset, 0 2px 6px rgba(0,0,0,.2);
 }
-/* GOLD ARC inside the badge */
-.brand .mark svg{display:block}
 .brand span{
 font:700 15px/1.1 Georgia,serif; letter-spacing:.2px;
 }
@@ -97,7 +96,7 @@ button:active{transform:translateY(1px)}
 @media (prefers-color-scheme: dark){
 body{background:linear-gradient(180deg,#100f0c 0%, #0e0d0b 100%)}
 .card{background:#141312; border-color:#2a271f}
-.brand .mark{background:#141312}
+.brand .mark{background:var(--gold-strong)}
 .lede{color:#b9b29f}
 input[type=email]{background:#100f0c; border-color:#2a271f; color:#eee}
 button{background:#caa21b; color:#100f0c}
@@ -106,18 +105,9 @@ button{background:#caa21b; color:#100f0c}
 </head>
 <body>
 <div class="wrap">
-<!-- Elegant brand button with GOLD ARC mark -->
+<!-- Elegant brand button with SOLID GOLD mark -->
 <a class="brand" href="/">
-<div class="mark" aria-hidden="true">
-<!-- Gentle bridge arc -->
-<svg width="26" height="16" viewBox="0 0 26 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-<path d="M2 13 C 7 10, 19 10, 24 13"
-stroke="var(--gold-strong)"
-stroke-width="3"
-fill="none"
-stroke-linecap="round"/>
-</svg>
-</div>
+<div class="mark" aria-hidden="true"></div>
 <span>Bridge Across Community</span>
 </a>
 
