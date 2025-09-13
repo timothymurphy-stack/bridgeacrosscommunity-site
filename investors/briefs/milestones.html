@@ -48,35 +48,42 @@ font:15px/1.6 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
 color:var(--ink);
 }
 
-/* Ultra-minimal header (soft, gold buttons) */
+/* Ultra-minimal header (barely-visible links) */
 .mini-bar{
 position:sticky; top:0; z-index:998;
-background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.35));
-border-bottom:1px solid rgba(230,221,196,.65);
-backdrop-filter:saturate(115%) blur(2px);
+background:linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.2));
+border-bottom:1px solid rgba(230,221,196,.45);
+backdrop-filter:saturate(110%) blur(1.5px);
 }
 .mini-in{
-max-width:960px; margin:0 auto; padding:10px 16px;
+max-width:960px; margin:0 auto; padding:8px 16px;
 display:flex; gap:10px; align-items:center; justify-content:space-between;
-font-size:14px;
 }
 .mini-actions a{
-color:#1a160a; text-decoration:none;
-background:var(--gold);
-border:1px solid var(--gold);
-padding:.44rem .68rem;
-border-radius:10px;
-font-weight:700; letter-spacing:.2px;
-box-shadow:0 6px 14px rgba(202,162,27,.18);
-transition:filter .15s ease;
+font-weight:400;
+font-size:12.5px;
+line-height:1;
+color:#4a463a;
+text-decoration:none;
+background:transparent;
+border:1px solid rgba(212,175,55,.38); /* soft gold outline */
+padding:.30rem .54rem; /* small, quiet */
+border-radius:7px;
+transition:color .15s ease, background .15s ease, border-color .15s ease, opacity .15s ease;
+opacity:.72; /* barely visible */
 }
-.mini-actions a:hover{ filter:brightness(1.04); }
+.mini-actions a:hover{
+color:var(--gold-strong);
+background:rgba(212,175,55,.06);
+border-color:rgba(212,175,55,.55);
+opacity:.95;
+}
 
 /* Document stage */
 .stage{
-min-height:calc(100vh - 58px);
+min-height:calc(100vh - 54px);
 display:grid; place-items:start center;
-padding:32px 16px 72px;
+padding:28px 16px 72px;
 }
 .page{
 width:min(820px, 92vw);
@@ -125,7 +132,7 @@ h1{ font-size:26px; }
 </head>
 <body>
 
-<!-- Minimal header: only library + sign out (gold-filled, quieter on light bg) -->
+<!-- Minimal header: only library + sign out (barely visible) -->
 <div class="mini-bar">
 <div class="mini-in">
 <div class="mini-actions">
