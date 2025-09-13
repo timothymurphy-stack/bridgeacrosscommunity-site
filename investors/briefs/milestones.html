@@ -1,62 +1,194 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Guard snippet (localStorage-aware) -->
 <script>
 (function(){
 try{
 const get = k => localStorage.getItem(k) || sessionStorage.getItem(k);
 const u = get("bac_user");
 const t = Number(get("bac_until") || 0);
-if(!u || Date.now()>t){ location.replace("/investors/login.html"); }
+if(!u || Date.now() > t){ location.replace("/investors/login.html"); }
 }catch(e){ location.replace("/investors/login.html"); }
 })();
 </script>
-<script>window.BAC_CURRENT="milestones";</script>
-<script src="/investors/portal-nav.js?v=1"></script>
+
 <meta charset="utf-8">
 <title>The 7 Milestones | Bridge Across Community</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+
 <style>
-:root{--gold:#caa21b; --ink:#222}
-body{margin:40px auto;max-width:860px;padding:0 22px;font:16px/1.65 Georgia,serif;color:var(--ink);background:#fff}
-h1{margin:0 0 .6rem;font:700 28px/1.2 Georgia,serif;color:var(--gold)}
-h2{margin:1.4rem 0 .45rem;font:700 20px/1.25 Georgia,serif;color:var(--gold)}
-p{margin:.5rem 0}
-ul{margin:.5rem 0 .9rem 1.2rem}
-li{margin:.35rem 0}
-.lede{font-style:italic;color:#444}
-hr{border:0;border-top:1px solid #e7e2ce;margin:1.2rem 0}
-.meta{font:13px/1.3 system-ui,Segoe UI,Arial;color:#777;margin-top:1.2rem}
-.badge{display:inline-block;padding:.22rem .5rem;border:1px solid rgba(202,162,27,.55);color:#7a6511;background:rgba(202,162,27,.08);border-radius:5px;font:12px/1.1 system-ui,Segoe UI,Arial}
+:root{
+--bg:#0e0d0b; /* deep backdrop */
+--paper:#ffffff; /* page */
+--ink:#222222; /* body text */
+--muted:#6f6a5a; /* helper */
+--gold:#caa21b; /* accent */
+--line:#e8e2cf; /* thin borders */
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0; background:linear-gradient(180deg,#12100c 0%, #0e0d0b 100%);
+font:16px/1.65 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+color:var(--ink);
+}
+
+/* Minimal header: almost invisible */
+.mini-bar{
+position:sticky; top:0; z-index:998;
+background:rgba(14,13,11,.35); /* translucent */
+backdrop-filter:saturate(120%) blur(3px);
+border-bottom:1px solid rgba(232,226,207,.10);
+}
+.mini-in{
+max-width:960px; margin:0 auto; padding:8px 16px;
+display:flex; gap:10px; align-items:center; justify-content:space-between;
+font-size:14px;
+}
+.mini-actions a{
+color:#e8e2cf; text-decoration:none;
+border:1px solid rgba(202,162,27,.45);
+padding:.38rem .6rem; border-radius:8px; background:rgba(20,19,16,.35);
+}
+.mini-actions a:hover{ background:rgba(202,162,27,.12); }
+
+/* Document frame (paper on velvet) */
+.stage{
+min-height:calc(100vh - 54px);
+display:grid; place-items:start center; padding:28px 16px 64px;
+}
+.page{
+width:min(820px, 92vw);
+background:var(--paper);
+border:1px solid var(--line);
+border-radius:14px;
+box-shadow:
+0 30px 60px rgba(0,0,0,.25),
+0 2px 0 rgba(255,255,255,.7) inset;
+padding:52px 56px;
+}
+
+/* Type system */
+h1{
+margin:0 0 18px; font:700 30px/1.2 Georgia, "Times New Roman", serif;
+letter-spacing:.2px; color:#7a6511; text-align:center;
+}
+.subtitle{
+margin:-6px 0 28px; text-align:center; color:#8b7b2b; font-weight:600;
+}
+h2{ margin:28px 0 12px; font:700 20px/1.3 Georgia,serif; color:#3b3212; }
+p{ margin:0 0 16px; }
+ul{ margin:0 0 18px 1.1rem; }
+li{ margin:6px 0; }
+.note{ color:#655f50; font-size:14px; }
+
+/* Dividers */
+hr{
+border:0; height:1px; background:linear-gradient(90deg,transparent, #e8e2cf, transparent);
+margin:24px 0;
+}
+
+/* Footer (within the page) */
+.doc-foot{
+margin-top:28px; display:flex; justify-content:space-between; align-items:center; color:#7c7360; font-size:14px;
+}
+.doc-foot a{ color:#7c7360; text-decoration:underline; }
+
+@media (max-width: 560px){
+.page{ padding:36px 20px; }
+h1{ font-size:26px; }
+}
 </style>
 </head>
 <body>
-<h1>The 7 Milestones</h1>
-<p class="lede">Each milestone is finite, measurable, and defining. They mark the quiet progress of Community ONE.</p>
-<div class="badge">Private — invitation only</div>
 
-<h2>Milestones Ladder</h2>
-<ul>
-<li><strong>M1:</strong> 1 user</li>
-<li><strong>M1.5:</strong> 6 users (and turn on software)</li>
-<li><strong>M2:</strong> 10 users</li>
-<li><strong>M3:</strong> 20 users</li>
-<li><strong>M4:</strong> 50 users</li>
-<li><strong>M5:</strong> 100 users</li>
-<li><strong>M6:</strong> 200 users</li>
-<li><strong>M7:</strong> 500 users</li>
-</ul>
+<!-- Almost-invisible header: only library + sign out -->
+<div class="mini-bar">
+<div class="mini-in">
+<div class="mini-actions">
+<a href="/investors/" aria-label="Back to library">← Back to Library</a>
+</div>
+<div class="mini-actions">
+<a href="#" id="signout">Sign out</a>
+</div>
+</div>
+</div>
 
-<h2>Why These Numbers</h2>
-<p>They are not arbitrary. They are finite goals that prove cadence. Each milestone is an act of belonging — one more
-saver, one more family, one more act of restoration. Together, they build credibility and enable replication.</p>
-
-<h2>Proof Before Scale</h2>
-<p>We do not chase thousands before proving tens. Cornwall proves the architecture by walking steadily through these
-seven steps. Each is a platform for the next.</p>
+<!-- Immersive document stage -->
+<div class="stage">
+<article class="page" role="document" aria-labelledby="title">
+<header>
+<h1 id="title">The 7 Milestones</h1>
+<div class="subtitle">From Saver&nbsp;1 to 500 — finite, auditable, human</div>
+</header>
 
 <hr>
-<p class="meta">Bridge Across Community · CSS is the infrastructure; BAC is its bridge into community.</p>
+
+<section>
+<h2>M1 — The First Saver (Family One)</h2>
+<p><strong>Objective:</strong> Light the first household quietly, with fierce intent. Steward captures pre-baseline; practitioner supports first week flow.</p>
+<ul>
+<li><strong>KR1.1</strong> Household consent + privacy compact acknowledged.</li>
+<li><strong>KR1.2</strong> First advance placed; <em>restoration schedule co-agreed</em> (short daily intervals to build habit).</li>
+<li><strong>KR1.3</strong> First <em>restoration loop</em> completed and logged.</li>
+</ul>
+</section>
+
+<section>
+<h2>M2 — Ten Savers</h2>
+<p>Evidence of pattern: small, real-time discretionary amounts captured and restored. Steward notes variance; practitioner cadence adjusted.</p>
+</section>
+
+<section>
+<h2>M3 — Fifty Savers</h2>
+<p>Operational reliability across multiple retailers. Daily restorations continue (end-of-day batch) with visible balances by night.</p>
+</section>
+
+<section>
+<h2>M4 — One Hundred</h2>
+<p>Community narrative established; privacy compact affirmed. First local replication candidate earmarked.</p>
+</section>
+
+<section>
+<h2>M5 — Two Hundred</h2>
+<p>Chair + Steward + Practitioner working as a three. Ratio evidence improves; restoration latency documented.</p>
+</section>
+
+<section>
+<h2>M6 — Three Hundred &amp; Fifty</h2>
+<p>Retailer coverage widened; promotions data ready for SPA exploration (without compromising dignity-first stance).</p>
+</section>
+
+<section>
+<h2>M7 — Five Hundred</h2>
+<p>Audited run. Board-ready metrics; replication pack finalised for next communities (Cornwall first, then a handful, then regional).</p>
+</section>
+
+<hr>
+
+<p class="note">Short intervals early: <strong>daily restorations</strong> establish habit and produce evidence quickly. Balances visible by the end of each day; retailer settlements may follow their normal cycle.</p>
+
+<div class="doc-foot">
+<span>Bridge Across Community — Private Brief</span>
+<a href="/investors/">Back to Library</a>
+</div>
+</article>
+</div>
+
+<script>
+// Sign out: clear session + return to public home
+(function(){
+const out = document.getElementById('signout');
+if(out){
+out.addEventListener('click', function(e){
+e.preventDefault();
+try{ localStorage.clear(); sessionStorage.clear(); }catch(_){}
+location.href = '/';
+});
+}
+})();
+</script>
 </body>
 </html>
