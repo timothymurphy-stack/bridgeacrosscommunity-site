@@ -8,46 +8,234 @@ try{
 const get = k => localStorage.getItem(k) || sessionStorage.getItem(k);
 const u = get("bac_user");
 const t = Number(get("bac_until") || 0);
-if(!u || Date.now()>t){ location.replace("/investors/login.html"); }
+if(!u || Date.now() > t){ location.replace("/investors/login.html"); }
 }catch(e){ location.replace("/investors/login.html"); }
 })();
 </script>
 
-<!-- Nav setup -->
-<script>window.BAC_CURRENT="chair-letter";</script>
-<script src="/investors/portal-nav.js?v=1"></script>
 <meta charset="utf-8">
 <title>Letter to the Chairperson | Bridge Across Community</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+
 <style>
-:root{--gold:#caa21b; --ink:#222}
-body{margin:40px auto;max-width:860px;padding:0 22px;font:16px/1.65 Georgia,serif;color:var(--ink);background:#fff}
-h1{margin:0 0 .6rem;font:700 28px/1.2 Georgia,serif;color:var(--gold)}
-p{margin:.5rem 0} .lede{font-style:italic;color:#444}
-hr{border:0;border-top:1px solid #e7e2ce;margin:1.2rem 0}
-.meta{font:13px/1.3 system-ui,Segoe UI,Arial;color:#777;margin-top:1.2rem}
+:root{
+/* Surround + page */
+--sur-top:#fbf8ef; /* warm ivory surround */
+--sur-bot:#f5ecd6; /* pale gold ivory */
+--paper:#ffffff; /* WHITER page for clarity */
+--frame:#e0d3aa; /* gold-tinted frame */
+
+/* Palette */
+--gold:#caa21b;
+--gold-strong:#d4af37;
+--ink:#333;
+--muted:#6f6a5a;
+
+/* Effects */
+--shadow:0 28px 56px rgba(0,0,0,.18),
+0 2px 0 rgba(255,255,255,.65) inset;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0;
+background:
+radial-gradient(1200px 700px at 70% -10%, rgba(202,162,27,.10), transparent 60%),
+linear-gradient(180deg, var(--sur-top) 0%, var(--sur-bot) 100%);
+font:15px/1.6 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+color:var(--ink);
+}
+
+/* Ultra-minimal header (faint links) */
+.mini-bar{
+position:sticky; top:0; z-index:998;
+background:transparent;
+border-bottom:0;
+}
+.mini-in{
+max-width:960px; margin:0 auto; padding:6px 16px;
+display:flex; gap:10px; align-items:center; justify-content:space-between;
+font-size:12.5px;
+}
+.mini-actions a{
+font-weight:400;
+font-size:12.5px;
+color:#555;
+text-decoration:none;
+opacity:.55; /* very faint */
+transition:opacity .15s ease, color .15s ease;
+}
+.mini-actions a:hover{
+opacity:.85;
+color:var(--gold-strong);
+}
+
+/* Document stage */
+.stage{
+min-height:calc(100vh - 40px);
+display:grid; place-items:start center;
+padding:28px 16px 72px;
+}
+.page{
+width:min(820px, 92vw);
+background:var(--paper);
+border:1px solid var(--frame);
+border-radius:14px;
+box-shadow:var(--shadow);
+padding:52px 56px 44px;
+}
+
+/* Type system */
+h1{
+margin:0 0 16px;
+font:700 30px/1.22 Georgia, "Times New Roman", serif;
+letter-spacing:.2px;
+color:var(--gold-strong);
+text-align:center;
+}
+.subtitle{
+margin:-6px 0 26px;
+text-align:center;
+color:#bda955;
+font-weight:600;
+}
+h2{
+margin:26px 0 10px;
+font:700 20px/1.28 Georgia,serif;
+color:var(--gold);
+}
+p{ margin:0 0 14px; }
+ul{ margin:0 0 16px 1.1rem; }
+li{ margin:6px 0; }
+strong{ color:var(--gold-strong); font-weight:700; }
+em{ color:#4a463a; }
+
+hr{
+border:0; height:1px;
+background:linear-gradient(90deg, transparent, var(--frame), transparent);
+margin:22px 0;
+}
+
+.doc-foot{
+margin-top:26px; display:flex; justify-content:space-between; align-items:center;
+color:#857a62; font-size:13px;
+}
+.doc-foot a{ color:#857a62; text-decoration:underline; }
+
+@media (max-width:560px){
+.page{ padding:34px 20px; }
+h1{ font-size:26px; }
+}
 </style>
 </head>
 <body>
-<h1>Letter to the Chairperson</h1>
-<p class="lede">If you are reading this, it is because you were already chosen in heart.</p>
 
-<p>This is not a pitch. It is an invitation. An invitation to stand at the level of <strong>Saver One</strong> — the first
-family — and to light what has not yet been lit. Your presence at that moment will author a cadence that cannot be
-stopped.</p>
+<!-- Minimal header: only library + sign out (faint links) -->
+<div class="mini-bar">
+<div class="mini-in">
+<div class="mini-actions">
+<a href="/investors/">← Back to Investor &amp; Chair Documents</a>
+</div>
+<div class="mini-actions">
+<a href="#" id="signout">Sign out</a>
+</div>
+</div>
+</div>
 
-<p>You will not be asked to perform. You will be asked to witness, to author, to protect. To prove that a fund can be
-safeguarded, never spent. To see one family begin — and to know that from their restoration loop, Cornwall will hold
-a new template for community and finance.</p>
-
-<p>What follows in this secure library are eight briefings. Each one shows a facet of the architecture — CSS, BAC, the
-fund, the privacy compact, the replication pattern. But none of them carries the weight of this page. Because the act
-that matters most is the act that only you can author: <em>the first light.</em></p>
-
-<p>If you feel this call, then it was always you. You are already the Chairperson of Heart.</p>
+<!-- Immersive document stage -->
+<div class="stage">
+<article class="page" role="document" aria-labelledby="title">
+<header>
+<h1 id="title">Letter to the Chairperson</h1>
+<div class="subtitle">Standing at the level of Saver&nbsp;1 — quiet intent, finite milestones</div>
+</header>
 
 <hr>
-<p class="meta">Bridge Across Community · Cornwall · Community ONE</p>
+
+<section>
+<p>Dear Chair,</p>
+<p>
+Thank you for stepping into this private folio. What follows is not a pitch, but an
+<strong>invitation to stand</strong> at the level of the first household in Cornwall — to light the first saver,
+and to shepherd a finite progression from <strong>1 → 500</strong>. Your role is to bring
+<strong>clarity, courage, and cadence</strong> to a system designed for dignity.
+</p>
+</section>
+
+<section>
+<h2>What we are building</h2>
+<p>
+A <strong>real-time discretionary savings fabric</strong> (CSS) that captures everyday amounts —
+pennies to pounds — and restores a perpetual fund that is <em>not spent</em>, held in trust, and
+managed for the community. <strong>Bridge Across Community (BAC)</strong> provides the distribution and
+human onboarding, one household at a time.
+</p>
+<p>
+This answers a two-decade call for inclusion — from Sandler to Welby — with a structural innovation:
+<strong>habit-forming restoration loops</strong>, daily visibility of balances, and stewarded replication,
+Cornwall first.
+</p>
+</section>
+
+<section>
+<h2>Your stance and OKRs</h2>
+<ul>
+<li><strong>O1 — First Light:</strong> Light the first household quietly, with fierce intent. Protect their dignity.</li>
+<li><strong>KR1.1</strong> Consent and privacy compact acknowledged; baseline captured.</li>
+<li><strong>KR1.2</strong> First advance placed; <em>restoration cadence co-agreed</em> (daily, initially).</li>
+<li><strong>KR1.3</strong> First <em>restoration loop</em> completed and logged.</li>
+</ul>
+<ul>
+<li><strong>O2 — Evidence:</strong> Establish a pattern across ten, then fifty savers. Ratios improve; cadence stabilises.</li>
+<li><strong>O3 — Stewarded Scale:</strong> Reach 500 with audit-ready metrics and a replication pack for the next communities.</li>
+</ul>
+</section>
+
+<section>
+<h2>How we begin — and why it matters</h2>
+<p>
+We begin with <strong>one family</strong>. Small, real-time amounts are captured as they live — a few pounds on
+a Monday morning, another in the evening — and balances are visible by night. The act of saving becomes
+<strong>convenient, dignified, and cumulative</strong>.
+</p>
+<p>
+Your presence signals that this is <strong>not another pilot</strong>, but the careful ignition of a permanent,
+community-owned capability.
+</p>
+</section>
+
+<hr>
+
+<section>
+<p>
+If this resonates, we propose a quiet session to confirm the first light plan and agree the
+initial cadence. From there, the <strong>Milestones ladder</strong> (1 → 500) will carry us.
+</p>
+<p>With respect,</p>
+<p><strong>Bridge Across Community</strong></p>
+</section>
+
+<div class="doc-foot">
+<span>Bridge Across Community — Private Brief</span>
+<a href="/investors/">Back to Investor &amp; Chair Documents</a>
+</div>
+</article>
+</div>
+
+<script>
+// Sign out: clear session + return to public home
+(function(){
+const out = document.getElementById('signout');
+if(out){
+out.addEventListener('click', function(e){
+e.preventDefault();
+try{ localStorage.clear(); sessionStorage.clear(); }catch(_){}
+location.href = '/';
+});
+}
+})();
+</script>
 </body>
 </html>
