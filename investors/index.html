@@ -1,177 +1,161 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script>
-(function(){
-try{
-const get = k => localStorage.getItem(k) || sessionStorage.getItem(k);
-const u = get("bac_user");
-const t = Number(get("bac_until") || 0);
-if(!u || Date.now() > t){
-location.replace("/investors/login.html");
-}
-}catch(e){
-location.replace("/investors/login.html");
-}
-})();
-</script>
 <meta charset="utf-8">
-<title>Investors & Chair — Bridge Across Community</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
-<link rel="icon" href="/assets/favicon.png">
- 
+<title>Investors & Chair | Bridge Across Community</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+
 <style>
-:root{
---gold:#caa21b; --ivory:#f7f4ea; --ink:#222; --muted:#4a4a4a;
+body{
+margin:0;
+font-family: "Segoe UI", system-ui, sans-serif;
+background:#f4f4f4;
+color:#333;
 }
-*{box-sizing:border-box}
-body{margin:0;background:#fff;color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial}
-a{color:inherit;text-decoration:none}
+
 .hero{
-position:relative; min-height:56vh; display:grid; place-items:center; text-align:center; overflow:hidden;
-background:#000;
+background:url('/assets/bridge-golden.jpg') center/cover no-repeat;
+min-height:260px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:#fff;
+padding:20px;
 }
-.hero::before{
-content:""; position:absolute; inset:0;
-background:url("/investors/assets/hero.jpg") center/cover no-repeat;
-filter:saturate(1) contrast(1.05) brightness(0.85);
-transform:scale(1.02);
-}
-.hero::after{
-content:""; position:absolute; inset:0;
-background:linear-gradient( to bottom, rgba(0,0,0,.25), rgba(0,0,0,.45));
-}
-.hero-inner{position:relative; padding:8vh 4vw; max-width:1100px}
+
 .hero h1{
-margin:0 0 .3rem; font-size:clamp(28px,5vw,56px); letter-spacing:.02em; color:var(--gold);
-font-weight:700; text-transform:uppercase;
+font-size:40px;
+font-weight:700;
+color:#d4af37; /* gold */
+text-shadow:0 0 6px rgba(0,0,0,0.4); /* lift from background */
+margin:0 0 10px;
+letter-spacing:2px;
+text-transform:uppercase;
 }
-.hero p.lede{
-margin:.25rem auto 1.25rem; max-width:900px; color:#f9f3dc; font-size:clamp(16px,2.2vw,22px);
+
+.hero p.tagline{
+font-size:16px;
+font-style:italic;
+color:#fff; /* white */
+margin:0;
 }
-.gold-dust{
-display:inline-block; padding:.55rem .9rem; border:1px solid rgba(202,162,27,.6);
-color:#ffe9a6; background:rgba(202,162,27,.12); border-radius:6px; backdrop-filter:blur(2px);
-font-size:clamp(14px,1.8vw,18px)
+
+.container{
+max-width:1000px;
+margin:40px auto;
+padding:0 20px;
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+gap:20px;
 }
-.wrap{max-width:1100px; margin:0 auto; padding:36px 4vw}
-.section-title{
-color:var(--gold); font-weight:700; font-size:22px; margin:0 0 .75rem
+
+.card{
+background:#fff;
+border-radius:8px;
+padding:20px;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+transition:transform .2s;
+text-decoration:none;
+color:#333;
 }
-.docs{
-display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+.card:hover{
+transform:translateY(-4px);
+box-shadow:0 8px 18px rgba(0,0,0,0.12);
 }
-.doc{
-border:1px solid #e9e6da; border-radius:10px; padding:14px 14px 12px; background:#fff;
-transition:box-shadow .2s ease, transform .15s ease;
+
+.card h2{
+font-size:18px;
+margin:0 0 10px;
+color:#d4af37;
 }
-.doc:hover{box-shadow:0 6px 24px rgba(0,0,0,.06); transform:translateY(-1px)}
-.doc small{color:#8c8c8c}
-.doc h3{margin:.1rem 0 .25rem; font-size:18px; color:var(--gold)}
-.lock{font-size:15px; opacity:.9; margin-left:.25rem}
-.foot{opacity:.7; color:#666; font-size:13px; margin-top:22px}
-/* minimal button row if needed later */
-.cta-row{margin-top:16px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
-.btn{border:1px solid var(--gold); color:var(--gold); padding:.55rem .9rem; border-radius:6px}
-.btn:hover{background:rgba(202,162,27,.06)}
- .gold-heading {
-color: #d4af37; /* bright gold */
-font-weight: 700; /* bold but elegant */
-text-align: center;
-font-size: 2.6rem;
-text-shadow: 0 2px 4px rgba(0,0,0,0.6); /* shadow for contrast */
+
+.card p{
+margin:0;
+font-size:14px;
+line-height:1.4;
 }
+
+.topbar{
+display:flex;
+justify-content:flex-end;
+padding:10px 20px;
+background:#fff;
+border-bottom:1px solid #ddd;
+}
+
+.topbar a{
+margin-left:15px;
+font-size:14px;
+color:#333;
+text-decoration:none;
+opacity:.8;
+}
+.topbar a:hover{opacity:1;}
 </style>
 </head>
 <body>
 
-<!-- HERO with your image + gold dust line -->
-<header class="hero">
-<div class="hero-inner">
-<h1 class="gold-heading">Investors & Chair</h1>
-<p class="lede">Bridge Across Community — Cornwall first. Light the first saver. Author the cadence.</p>
-<!-- If you want buttons later:
-<div class="cta-row">
-<a class="btn" href="#docs">View Documents</a>
-<a class="btn" href="/investors/people/chair.html">Chair Prospectus</a>
+<div class="topbar">
+<a href="/investors/index.html">Library</a>
+<a href="/investors/logout.html">Sign out</a>
 </div>
--->
+
+<div class="hero">
+<h1>INVESTORS &amp; CHAIR</h1>
+<p class="tagline">Bridge Across Community — Cornwall first. Light the first saver. Author the cadence.</p>
 </div>
-</header>
 
-<!-- DOCUMENTS -->
-<main class="wrap" id="docs" role="main" aria-label="Investor Documents">
-<h2 class="section-title">Documents</h2>
-<section class="docs">
-
-<a class="doc" href="briefs/chair-letter.html" target="_blank" rel="noopener">
-<small>Letter</small>
-<h3>Letter to the Chairperson ✉️</h3>
-<p>A personal invitation to stand at Saver One and author the first cadence.</p>
+<div class="container">
+<a class="card" href="/investors/briefs/milestones.html">
+<h2>The 7 Milestones</h2>
+<p>One saver, one family, one cadence: how growth unfolds step by step.</p>
 </a>
 
-<a class="doc" href="briefs/milestones.html" target="_blank" rel="noopener">
-<small>Framework</small>
-<h3>The 7 Milestones 📈</h3>
-<p>Finite, defining steps from 1 user to 500 that prove cadence and credibility.</p>
+<a class="card" href="/investors/briefs/investor-positioning.html">
+<h2>Investor Positioning Brief</h2>
+<p>Positioning CSS & BAC as the response to unmet financial inclusion calls.</p>
 </a>
 
-<a class="doc" href="briefs/positioning-brief.html" target="_blank" rel="noopener">
-<small>Brief</small>
-<h3>Investor Positioning Brief 🔒</h3>
-<p>Twenty years of calls to reach the excluded. CSS + BAC begin the structural answer in Cornwall.</p>
+<a class="card" href="/investors/briefs/chair-prospectus.html">
+<h2>Chair Prospectus</h2>
+<p>The invitation for a Chairperson of Heart to light the first saver.</p>
 </a>
 
-<a class="doc" href="briefs/filling-the-gap.html" target="_blank" rel="noopener">
-<small>Brief</small>
-<h3>“Filling the Gap” — Flagship 🔒</h3>
-<p>Where depletion ruled, we build accumulation; where exclusion stood, we build belonging.</p>
+<a class="card" href="/investors/briefs/css-strategic-brief.html">
+<h2>CSS Strategic Brief</h2>
+<p>Operational design: real-time discretionary savings, restored daily.</p>
 </a>
 
-<a class="doc" href="briefs/chair-prospectus.html" target="_blank" rel="noopener">
-<small>Brief</small>
-<h3>Chair Prospectus — Role & OKRs 🔒</h3>
-<p>The Chair stands at Saver One, quietly but with fierce intent. Role, presence, and early OKRs.</p>
+<a class="card" href="/investors/briefs/replication-outline.html">
+<h2>Replication Outline</h2>
+<p>From Cornwall’s Community ONE outward: scaling with dignity.</p>
 </a>
 
-<a class="doc" href="briefs/css-strategic-brief.html" target="_blank" rel="noopener">
-<small>Brief</small>
-<h3>CSS Strategic Brief 🔒</h3>
-<p>A safeguarded, never-spent architecture proving accumulation in real time, by daily habit.</p>
+<a class="card" href="/investors/briefs/privacy-compact.html">
+<h2>Privacy Compact</h2>
+<p>Dignity and trust: the compact we live by in serving savers.</p>
 </a>
 
-<a class="doc" href="briefs/first-light-plan.html" target="_blank" rel="noopener">
-<small>Brief</small>
-<h3>First Light — Activation Note 🔒</h3>
-<p>The ignition point: the first consent, the first advance, the first restoration loop.</p>
+<a class="card" href="/investors/briefs/revenue-and-spa.html">
+<h2>Deeper Revenue &amp; SPA</h2>
+<p>Layering a Sales Promotions Agency above CSS’s savings rails.</p>
 </a>
 
-<a class="doc" href="briefs/replication-outline.html" target="_blank" rel="noopener">
-<small>Brief</small>
-<h3>Replication Outline 🔒</h3>
-<p>Community ONE by stealth → a few more communities → regional later. Proof before scale.</p>
+<!-- Governance & Board (reserved) -->
+<a class="card" href="#">
+<h2>Governance &amp; Board (Reserved)</h2>
+<p>Framework ready for when a Chairperson steps forward.</p>
 </a>
 
-<a class="doc" href="briefs/privacy-compact.html" target="_blank" rel="noopener">
-<small>Governance</small>
-<h3>Governance & Privacy Compact 🔒</h3>
-<p>Consent, safeguards, oversight, and the right to be quiet. Dignity before scale.</p>
+<!-- Quiet Next Steps (reserved) -->
+<a class="card" href="#">
+<h2>Contact &amp; Quiet Next Steps (Reserved)</h2>
+<p>Confidential notes — to be authored with Chairperson input.</p>
 </a>
+</div>
 
-<a class="doc" href="briefs/revenue-and-spa.html" target="_blank" rel="noopener">
-<small>Revenue</small>
-<h3>Deeper Revenue Streams & Sales Promotions Agency 🔒</h3>
-<p>How CSS/BAC enable ethical, compounding revenues and an agency layer that directs demand.</p>
-</a>
-
-</section>
-
-
-
- 
-
-<p class="foot">Private — invitation only. If you need access, contact the steward.</p>
-</main>
 </body>
 </html>
