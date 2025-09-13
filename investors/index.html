@@ -15,6 +15,7 @@ color:#333;
 }
 
 .hero{
+/* Ensure this image exists at /assets/bridge-golden.jpg */
 background:url('/assets/bridge-golden.jpg') center/cover no-repeat;
 min-height:260px;
 display:flex;
@@ -33,13 +34,15 @@ color:#d4af37; /* gold */
 margin:0 0 10px;
 letter-spacing:2px;
 text-transform:uppercase;
+text-shadow:0 0 6px rgba(0,0,0,.4); /* subtle lift on busy image */
 }
 
 .hero p.tagline{
 font-size:16px;
 font-style:italic;
-color:#d4af37; /* gold tagline */
+color:#fff; /* white as requested */
 margin:0;
+text-shadow:0 0 4px rgba(0,0,0,.35);
 }
 
 .container{
@@ -143,13 +146,18 @@ opacity:.8;
 <p>Layering a Sales Promotions Agency above CSS’s savings rails.</p>
 </a>
 
-<!-- Governance & Board (reserved) -->
+<!-- Chair Letter (this was missing) -->
+<a class="card" href="/investors/briefs/chair-letter.html">
+<h2>Letter to the Chairperson</h2>
+<p>Stand at Saver 1. Quiet ignition, finite milestones, daily evidence.</p>
+</a>
+
+<!-- Reserved tiles kept, but inert -->
 <a class="card" href="#">
 <h2>Governance &amp; Board (Reserved)</h2>
 <p>Framework ready for when a Chairperson steps forward.</p>
 </a>
 
-<!-- Quiet Next Steps (reserved) -->
 <a class="card" href="#">
 <h2>Contact &amp; Quiet Next Steps (Reserved)</h2>
 <p>Confidential notes — to be authored with Chairperson input.</p>
