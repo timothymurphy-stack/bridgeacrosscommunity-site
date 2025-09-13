@@ -1,60 +1,262 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Guard snippet -->
 <script>
-(function(){try{const get=k=>localStorage.getItem(k)||sessionStorage.getItem(k);const u=get("bac_user");const t=Number(get("bac_until")||0);if(!u||Date.now()>t){location.replace("/investors/login.html");}}catch(e){location.replace("/investors/login.html");}})();
+(function(){
+try{
+const get = k => localStorage.getItem(k) || sessionStorage.getItem(k);
+const u = get("bac_user");
+const t = Number(get("bac_until") || 0);
+if(!u || Date.now() > t){ location.replace("/investors/login.html"); }
+}catch(e){ location.replace("/investors/login.html"); }
+})();
 </script>
-<script>window.BAC_CURRENT="privacy-compact";</script>
-<script src="/investors/portal-nav.js?v=1"></script>
 
 <meta charset="utf-8">
-<title>Governance & Privacy Compact | Bridge Across Community</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
+<title>Privacy Compact — Dignity & Governance | Bridge Across Community</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+
 <style>
-:root{--gold:#caa21b; --ink:#222}
-body{margin:40px auto;max-width:860px;padding:0 22px;font:16px/1.65 Georgia,serif;color:var(--ink);background:#fff}
-h1{margin:0 0 .6rem;font:700 28px/1.2 Georgia,serif;color:var(--gold)}
-h2{margin:1.4rem 0 .45rem;font:700 20px/1.25 Georgia,serif;color:var(--gold)}
-p{margin:.5rem 0} ul{margin:.4rem 0 .9rem 1.2rem} li{margin:.25rem 0}
-hr{border:0;border-top:1px solid #e7e2ce;margin:1.2rem 0}
-.meta{font:13px/1.3 system-ui,Segoe UI,Arial;color:#777;margin-top:1.2rem}
-.badge{display:inline-block;padding:.22rem .5rem;border:1px solid rgba(202,162,27,.55);color:#7a6511;background:rgba(202,162,27,.08);border-radius:5px;font:12px/1.1 system-ui,Segoe UI,Arial}
+:root{
+/* Surround + page */
+--sur-top:#fbf8ef; /* warm ivory surround */
+--sur-bot:#f5ecd6; /* pale gold ivory */
+--paper:#ffffff; /* WHITER page for clarity */
+--frame:#e0d3aa; /* gold-tinted frame */
+
+/* Palette */
+--gold:#caa21b;
+--gold-strong:#d4af37;
+--ink:#333;
+--muted:#6f6a5a;
+
+/* Effects */
+--shadow:0 28px 56px rgba(0,0,0,.18),
+0 2px 0 rgba(255,255,255,.65) inset;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0;
+background:
+radial-gradient(1200px 700px at 70% -10%, rgba(202,162,27,.10), transparent 60%),
+linear-gradient(180deg, var(--sur-top) 0%, var(--sur-bot) 100%);
+font:15px/1.6 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+color:var(--ink);
+}
+
+/* Ultra-minimal header (faint links) */
+.mini-bar{
+position:sticky; top:0; z-index:998;
+background:transparent;
+border-bottom:0;
+}
+.mini-in{
+max-width:960px; margin:0 auto; padding:6px 16px;
+display:flex; gap:10px; align-items:center; justify-content:space-between;
+font-size:12.5px;
+}
+.mini-actions a{
+font-weight:400;
+font-size:12.5px;
+color:#555;
+text-decoration:none;
+opacity:.55; /* very faint */
+transition:opacity .15s ease, color .15s ease;
+}
+.mini-actions a:hover{
+opacity:.85;
+color:var(--gold-strong);
+}
+
+/* Document stage */
+.stage{
+min-height:calc(100vh - 40px);
+display:grid; place-items:start center;
+padding:28px 16px 72px;
+}
+.page{
+width:min(820px, 92vw);
+background:var(--paper);
+border:1px solid var(--frame);
+border-radius:14px;
+box-shadow:var(--shadow);
+padding:52px 56px 44px;
+}
+
+/* Type system */
+h1{
+margin:0 0 16px;
+font:700 30px/1.22 Georgia, "Times New Roman", serif;
+letter-spacing:.2px;
+color:var(--gold-strong);
+text-align:center;
+}
+.subtitle{
+margin:-6px 0 26px;
+text-align:center;
+color:#bda955;
+font-weight:600;
+}
+h2{
+margin:26px 0 10px;
+font:700 20px/1.28 Georgia,serif;
+color:var(--gold);
+}
+p{ margin:0 0 14px; }
+ul{ margin:0 0 16px 1.1rem; }
+li{ margin:6px 0; }
+strong{ color:var(--gold-strong); font-weight:700; }
+em{ color:#4a463a; }
+
+hr{
+border:0; height:1px;
+background:linear-gradient(90deg, transparent, var(--frame), transparent);
+margin:22px 0;
+}
+
+.doc-foot{
+margin-top:26px; display:flex; justify-content:space-between; align-items:center;
+color:#857a62; font-size:13px;
+}
+.doc-foot a{ color:#857a62; text-decoration:underline; }
+
+@media (max-width:560px){
+.page{ padding:34px 20px; }
+h1{ font-size:26px; }
+}
 </style>
 </head>
 <body>
-<h1>Governance & Privacy Compact</h1>
-<p class="badge">Private — invitation only</p>
 
+<!-- Minimal header: only library + sign out (faint links) -->
+<div class="mini-bar">
+<div class="mini-in">
+<div class="mini-actions">
+<a href="/investors/">← Back to Investor &amp; Chair Documents</a>
+</div>
+<div class="mini-actions">
+<a href="#" id="signout">Sign out</a>
+</div>
+</div>
+</div>
+
+<!-- Immersive document stage -->
+<div class="stage">
+<article class="page" role="document" aria-labelledby="title">
+<header>
+<h1 id="title">Privacy Compact — Dignity &amp; Governance</h1>
+<div class="subtitle">Consent that is real, data that is minimal, narratives that protect</div>
+</header>
+
+<hr>
+
+<section>
 <h2>Purpose</h2>
-<p>Protect dignity, protect the corpus, and protect truth. Governance exists to keep faith with savers and investors:
-consent before data, oversight before scale, privacy above spectacle.</p>
+<p>
+To ensure that <strong>every saver’s dignity</strong> is protected while enabling a <strong>community-owned savings fabric</strong>.
+This compact sets our stance on consent, data minimisation, narrative dignity, access, security, and accountability.
+</p>
+</section>
 
-<h2>Principles</h2>
+<section>
+<h2>Consent (real, not implied)</h2>
 <ul>
-<li><strong>Minimal data:</strong> collect only what’s necessary to serve and safeguard.</li>
-<li><strong>Explicit consent:</strong> clear, human-readable consent for placements and restoration cadence.</li>
-<li><strong>Access control:</strong> invite-only portal; least privilege; short session duration.</li>
-<li><strong>Independent oversight:</strong> quarterly review; raise & resolve issues; publish a quiet internal note.</li>
-<li><strong>Auditability without theatre:</strong> logs available to oversight; never public performance.</li>
-<li><strong>Right to be quiet:</strong> opt-out of publicity; communications by permission only.</li>
+<li><strong>Plain-language consent</strong> at onboarding; savers can ask questions and take time.</li>
+<li><strong>Revocation is simple</strong> — no penalty; support is offered if they choose to pause or exit.</li>
+<li><strong>Household-led choices</strong> on what is shared back (e.g., summary balances vs. narratives).</li>
 </ul>
+</section>
 
-<h2>Operational Safeguards</h2>
+<section>
+<h2>Data minimisation (enough to serve, no more)</h2>
 <ul>
-<li><strong>Never-spent corpus:</strong> funds are placed and restored; corpus remains intact.</li>
-<li><strong>Eligibility & verification:</strong> practitioner-led checks; documented but humane.</li>
-<li><strong>Incident handling:</strong> pause, assess, correct; communicate quietly to oversight within 72 hours.</li>
-<li><strong>Data retention:</strong> keep for the minimal period; encrypt at rest; purge on schedule.</li>
+<li><strong>Only what’s required</strong> to operate restoration loops, show balances, and audit flows.</li>
+<li><strong>Pseudonymised operational logs</strong>; personal identifiers stored separately where possible.</li>
+<li><strong>Access scoping</strong>: role-based restrictions for Chair, Steward, Practitioner.</li>
 </ul>
+</section>
 
-<h2>Reporting Rhythm</h2>
+<section>
+<h2>Narrative dignity (people, not case studies)</h2>
 <ul>
-<li><strong>Weekly:</strong> Chair + steward + practitioner one-page view (consent, placements, restorations, issues).</li>
-<li><strong>Monthly:</strong> restoration rate, households in cadence, issues resolved.</li>
-<li><strong>Quarterly:</strong> oversight sign-off; privacy checks passed; recommendations tracked.</li>
+<li><strong>No public exposure</strong> of households. Stories anonymised and consented.</li>
+<li><strong>Language audit</strong>: remove shaming terms; write with respect and accuracy.</li>
+<li><strong>Community review</strong> of public narratives before use.</li>
 </ul>
+</section>
 
-<hr><p class="meta">Bridge Across Community · CSS is the infrastructure; BAC is its bridge into community.</p>
+<section>
+<h2>Security &amp; controls</h2>
+<ul>
+<li><strong>Least privilege</strong> access; logs kept; periodic access reviews.</li>
+<li><strong>Encryption at rest and in transit</strong> for operational data; keys rotated.</li>
+<li><strong>Incident playbook</strong>: contain, notify, learn; timelines recorded; board briefed.</li>
+</ul>
+</section>
+
+<section>
+<h2>Retention &amp; deletion</h2>
+<ul>
+<li><strong>Operational data</strong>: retained only as long as needed for reconciliations and audits.</li>
+<li><strong>Right to be forgotten</strong>: honoured unless legal retention applies; clear process steps.</li>
+<li><strong>Backups</strong>: encrypted; deletion cascades to backups within a defined window.</li>
+</ul>
+</section>
+
+<section>
+<h2>Transparency to households</h2>
+<ul>
+<li><strong>What we hold &amp; why</strong> — provided on request in clear language.</li>
+<li><strong>How to correct</strong> — simple route to fix errors; confirmation when done.</li>
+<li><strong>How to complain</strong> — independent route; response time commitments.</li>
+</ul>
+</section>
+
+<section>
+<h2>Governance roles</h2>
+<ul>
+<li><strong>Chair</strong> — accountable for stance; ensures compact is lived, not just written.</li>
+<li><strong>Steward</strong> — owns consent records, privacy logs, and narrative approvals.</li>
+<li><strong>Practitioner</strong> — frontline dignity; ensures households understand choices.</li>
+</ul>
+</section>
+
+<section>
+<h2>Compact in practice (Cornwall first)</h2>
+<ul>
+<li><strong>Daily restorations</strong> with minimal data; nightly batch receipts retained.</li>
+<li><strong>Monthly privacy review</strong> (Chair–Steward–Practitioner) with action notes.</li>
+<li><strong>Quarterly board summary</strong> — redacted, aggregated, respectful.</li>
+</ul>
+</section>
+
+<hr>
+
+<p class="note"><strong>In one line:</strong> We collect the least, protect the most, and tell stories that lift people — never expose them.</p>
+
+<div class="doc-foot">
+<span>Bridge Across Community — Private Brief</span>
+<a href="/investors/">Back to Investor &amp; Chair Documents</a>
+</div>
+</article>
+</div>
+
+<script>
+// Sign out: clear session + return to public home
+(function(){
+const out = document.getElementById('signout');
+if(out){
+out.addEventListener('click', function(e){
+e.preventDefault();
+try{ localStorage.clear(); sessionStorage.clear(); }catch(_){}
+location.href = '/';
+});
+}
+})();
+</script>
 </body>
 </html>
