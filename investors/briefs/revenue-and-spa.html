@@ -1,56 +1,244 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Guard snippet -->
 <script>
-(function(){try{const get=k=>localStorage.getItem(k)||sessionStorage.getItem(k);const u=get("bac_user");const t=Number(get("bac_until")||0);if(!u||Date.now()>t){location.replace("/investors/login.html");}}catch(e){location.replace("/investors/login.html");}})();
+(function(){
+try{
+const get = k => localStorage.getItem(k) || sessionStorage.getItem(k);
+const u = get("bac_user");
+const t = Number(get("bac_until") || 0);
+if(!u || Date.now() > t){ location.replace("/investors/login.html"); }
+}catch(e){ location.replace("/investors/login.html"); }
+})();
 </script>
-<script>window.BAC_CURRENT="revenue-and-spa";</script>
-<script src="/investors/portal-nav.js?v=1"></script>
-
 
 <meta charset="utf-8">
-<title>Deeper Revenue Streams & SPA | Bridge Across Community</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
+<title>Deeper Revenue &amp; SPA — Dignity-First Layering | Bridge Across Community</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+
 <style>
-:root{--gold:#caa21b; --ink:#222}
-body{margin:40px auto;max-width:860px;padding:0 22px;font:16px/1.65 Georgia,serif;color:var(--ink);background:#fff}
-h1{margin:0 0 .6rem;font:700 28px/1.2 Georgia,serif;color:var(--gold)}
-h2{margin:1.4rem 0 .45rem;font:700 20px/1.25 Georgia,serif;color:var(--gold)}
-p{margin:.5rem 0} ul{margin:.4rem 0 .9rem 1.2rem} li{margin:.25rem 0}
-hr{border:0;border-top:1px solid #e7e2ce;margin:1.2rem 0}
-.meta{font:13px/1.3 system-ui,Segoe UI,Arial;color:#777;margin-top:1.2rem}
-.badge{display:inline-block;padding:.22rem .5rem;border:1px solid rgba(202,162,27,.55);color:#7a6511;background:rgba(202,162,27,.08);border-radius:5px;font:12px/1.1 system-ui,Segoe UI,Arial}
+:root{
+/* Surround + page */
+--sur-top:#fbf8ef; /* warm ivory surround */
+--sur-bot:#f5ecd6; /* pale gold ivory */
+--paper:#ffffff; /* WHITER page for clarity */
+--frame:#e0d3aa; /* gold-tinted frame */
+
+/* Palette */
+--gold:#caa21b;
+--gold-strong:#d4af37;
+--ink:#333;
+--muted:#6f6a5a;
+
+/* Effects */
+--shadow:0 28px 56px rgba(0,0,0,.18),
+0 2px 0 rgba(255,255,255,.65) inset;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0;
+background:
+radial-gradient(1200px 700px at 70% -10%, rgba(202,162,27,.10), transparent 60%),
+linear-gradient(180deg, var(--sur-top) 0%, var(--sur-bot) 100%);
+font:15px/1.6 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+color:var(--ink);
+}
+
+/* Ultra-minimal header (faint links) */
+.mini-bar{
+position:sticky; top:0; z-index:998;
+background:transparent;
+border-bottom:0;
+}
+.mini-in{
+max-width:960px; margin:0 auto; padding:6px 16px;
+display:flex; gap:10px; align-items:center; justify-content:space-between;
+font-size:12.5px;
+}
+.mini-actions a{
+font-weight:400;
+font-size:12.5px;
+color:#555;
+text-decoration:none;
+opacity:.55; /* very faint */
+transition:opacity .15s ease, color .15s ease;
+}
+.mini-actions a:hover{
+opacity:.85;
+color:var(--gold-strong);
+}
+
+/* Document stage */
+.stage{
+min-height:calc(100vh - 40px);
+display:grid; place-items:start center;
+padding:28px 16px 72px;
+}
+.page{
+width:min(820px, 92vw);
+background:var(--paper);
+border:1px solid var(--frame);
+border-radius:14px;
+box-shadow:var(--shadow);
+padding:52px 56px 44px;
+}
+
+/* Type system */
+h1{
+margin:0 0 16px;
+font:700 30px/1.22 Georgia, "Times New Roman", serif;
+letter-spacing:.2px;
+color:var(--gold-strong);
+text-align:center;
+}
+.subtitle{
+margin:-6px 0 26px;
+text-align:center;
+color:#bda955;
+font-weight:600;
+}
+h2{
+margin:26px 0 10px;
+font:700 20px/1.28 Georgia,serif;
+color:var(--gold);
+}
+p{ margin:0 0 14px; }
+ul{ margin:0 0 16px 1.1rem; }
+li{ margin:6px 0; }
+strong{ color:var(--gold-strong); font-weight:700; }
+em{ color:#4a463a; }
+
+hr{
+border:0; height:1px;
+background:linear-gradient(90deg, transparent, var(--frame), transparent);
+margin:22px 0;
+}
+
+.doc-foot{
+margin-top:26px; display:flex; justify-content:space-between; align-items:center;
+color:#857a62; font-size:13px;
+}
+.doc-foot a{ color:#857a62; text-decoration:underline; }
+
+@media (max-width:560px){
+.page{ padding:34px 20px; }
+h1{ font-size:26px; }
+}
 </style>
 </head>
 <body>
-<h1>Deeper Revenue Streams & Sales Promotions Agency</h1>
-<p class="badge">Private — invitation only</p>
 
-<h2>Thesis</h2>
-<p>CSS + BAC form the dignity rail. On top, an ethical Sales Promotions Agency (SPA) compounds value by directing demand,
-lowering the cost-of-need, and funding restoration — without spending the corpus.</p>
+<!-- Minimal header: only library + sign out (faint links) -->
+<div class="mini-bar">
+<div class="mini-in">
+<div class="mini-actions">
+<a href="/investors/">← Back to Investor &amp; Chair Documents</a>
+</div>
+<div class="mini-actions">
+<a href="#" id="signout">Sign out</a>
+</div>
+</div>
+</div>
 
-<h2>Revenue Motions (Illustrative)</h2>
+<!-- Immersive document stage -->
+<div class="stage">
+<article class="page" role="document" aria-labelledby="title">
+<header>
+<h1 id="title">Deeper Revenue &amp; Sales Promotions Agency (SPA)</h1>
+<div class="subtitle">Layered only when dignity is safe; designed for mutual benefit</div>
+</header>
+
+<hr>
+
+<section>
+<h2>Stance</h2>
+<p>
+SPA is **not** an advertising blast. It is a <strong>dignity-first promotions layer</strong> that arrives
+**after** the CSS habit is real and audited. The test: if turning it off harms dignity, we don’t turn it on.
+</p>
+</section>
+
+<section>
+<h2>Pre-conditions to switch on</h2>
 <ul>
-<li><strong>Retailer participation:</strong> SAIV-linked promotions that share value back to restoration and community partners.</li>
-<li><strong>Affinity campaigns:</strong> church/employer cohorts where sponsors underwrite starts and celebrate loops completed.</li>
-<li><strong>Procurement savings:</strong> channel aggregate purchasing to reduce essential costs; share verified savings as revenue.</li>
-<li><strong>Data-light insights:</strong> product innovation for Credit Unions arises from <em>patterns</em> of real-time saving, not personal dossiers.</li>
+<li><strong>Evidence first:</strong> CSS daily restorations stable; households see balances nightly.</li>
+<li><strong>Governance ready:</strong> privacy compact lived; consent pathways for any offer streams.</li>
+<li><strong>Retailer fit:</strong> partners agree to <em>restoration-linked</em> promotions (saver wins first).</li>
 </ul>
+</section>
 
-<h2>Guardrails</h2>
+<section>
+<h2>What SPA actually does</h2>
 <ul>
-<li><strong>Dignity first:</strong> no exploitation; no dark patterns; no selling of personal data.</li>
-<li><strong>Transparency:</strong> every promotion shows how value flows to restoration/community.</li>
-<li><strong>No corpus risk:</strong> SPA funds activity from partner value-share and efficiencies, not from the never-spent corpus.</li>
+<li><strong>Promotes saving actions</strong> (not spending) — e.g., “Save £x today, restoration at 23:30.”</li>
+<li><strong>Reward model</strong> aligns to saver benefit; BAC retains a transparent share for operations.</li>
+<li><strong>Local-first offers</strong> from participating retailers; opt-in, respectful frequency.</li>
 </ul>
+</section>
 
-<h2>Why It Matters</h2>
-<p>Real-time discretionary saving creates new, compounding surfaces for value creation. Over months and quarters, the profile
-of activity becomes profound — enabling partners to design products that honour habit, reduce cost-of-need, and strengthen the
-restoration cadence across communities.</p>
+<section>
+<h2>Channels &amp; frequency (opt-in)</h2>
+<ul>
+<li><strong>In-app / portal nudges</strong> tied to saver’s own cadence (never shaming).</li>
+<li><strong>SMS/email</strong> at low frequency; quiet periods respected; simple opt-out.</li>
+<li><strong>In-store</strong> prompts at participating retailers (no PII to floor staff).</li>
+</ul>
+</section>
 
-<hr><p class="meta">Bridge Across Community · CSS is the infrastructure; BAC is its bridge into community.</p>
+<section>
+<h2>Revenue model (illustrative)</h2>
+<ul>
+<li><strong>Restoration-linked incentives:</strong> retailer contributes a small % tied to confirmed restoration.</li>
+<li><strong>Co-funded campaigns:</strong> community events where a day’s restorations are amplified.</li>
+<li><strong>Data-safe insights:</strong> aggregated, privacy-preserving trend summaries for partners.</li>
+</ul>
+</section>
+
+<section>
+<h2>Safeguards</h2>
+<ul>
+<li><strong>Consent first:</strong> SPA only for households who opt-in.</li>
+<li><strong>Kill-switch:</strong> immediate disable if dignity is at risk or ratios degrade.</li>
+<li><strong>Board oversight:</strong> quarterly review; narrative checks; partner code of conduct.</li>
+</ul>
+</section>
+
+<section>
+<h2>Why this matters</h2>
+<p>
+When habit is established, SPA can <strong>accelerate restorations</strong> and fund local stewardship —
+without extracting from households. It keeps the system <strong>community-positive</strong> and
+<strong>replication-ready</strong>.
+</p>
+</section>
+
+<hr>
+
+<p class="note"><strong>In one line:</strong> SPA is a dignity-first accelerator — only layered after CSS habit is proven, with benefits flowing to savers and community first.</p>
+
+<div class="doc-foot">
+<span>Bridge Across Community — Private Brief</span>
+<a href="/investors/">Back to Investor &amp; Chair Documents</a>
+</div>
+</article>
+</div>
+
+<script>
+// Sign out: clear session + return to public home
+(function(){
+const out = document.getElementById('signout');
+if(out){
+out.addEventListener('click', function(e){
+e.preventDefault();
+try{ localStorage.clear(); sessionStorage.clear(); }catch(_){}
+location.href = '/';
+});
+}
+})();
+</script>
 </body>
 </html>
