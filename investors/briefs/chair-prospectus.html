@@ -1,77 +1,247 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Guard snippet -->
 <script>
-(function(){try{const get=k=>localStorage.getItem(k)||sessionStorage.getItem(k);const u=get("bac_user");const t=Number(get("bac_until")||0);if(!u||Date.now()>t){location.replace("/investors/login.html");}}catch(e){location.replace("/investors/login.html");}})();
+(function(){
+try{
+const get = k => localStorage.getItem(k) || sessionStorage.getItem(k);
+const u = get("bac_user");
+const t = Number(get("bac_until") || 0);
+if(!u || Date.now() > t){ location.replace("/investors/login.html"); }
+}catch(e){ location.replace("/investors/login.html"); }
+})();
 </script>
-<script>window.BAC_CURRENT="chair-prospectus";</script>
-<script src="/investors/portal-nav.js?v=1"></script>
-
 
 <meta charset="utf-8">
 <title>Chair Prospectus — Role & OKRs | Bridge Across Community</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+
 <style>
-:root{--gold:#caa21b; --ink:#222}
-body{margin:40px auto;max-width:860px;padding:0 22px;font:16px/1.65 Georgia,serif;color:var(--ink);background:#fff}
-h1{margin:0 0 .6rem;font:700 28px/1.2 Georgia,serif;color:var(--gold)}
-h2{margin:1.4rem 0 .45rem;font:700 20px/1.25 Georgia,serif;color:var(--gold)}
-p{margin:.5rem 0} ul{margin:.4rem 0 .9rem 1.2rem} li{margin:.25rem 0}
-.lede{font-style:italic;color:#444}
-hr{border:0;border-top:1px solid #e7e2ce;margin:1.2rem 0}
-.meta{font:13px/1.3 system-ui,Segoe UI,Arial;color:#777;margin-top:1.2rem}
-.badge{display:inline-block;padding:.22rem .5rem;border:1px solid rgba(202,162,27,.55);color:#7a6511;background:rgba(202,162,27,.08);border-radius:5px;font:12px/1.1 system-ui,Segoe UI,Arial}
+:root{
+/* Surround + page */
+--sur-top:#fbf8ef; /* warm ivory surround */
+--sur-bot:#f5ecd6; /* pale gold ivory */
+--paper:#ffffff; /* WHITER page for clarity */
+--frame:#e0d3aa; /* gold-tinted frame */
+
+/* Palette */
+--gold:#caa21b;
+--gold-strong:#d4af37;
+--ink:#333;
+--muted:#6f6a5a;
+
+/* Effects */
+--shadow:0 28px 56px rgba(0,0,0,.18),
+0 2px 0 rgba(255,255,255,.65) inset;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0;
+background:
+radial-gradient(1200px 700px at 70% -10%, rgba(202,162,27,.10), transparent 60%),
+linear-gradient(180deg, var(--sur-top) 0%, var(--sur-bot) 100%);
+font:15px/1.6 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+color:var(--ink);
+}
+
+/* Ultra-minimal header (faint links) */
+.mini-bar{
+position:sticky; top:0; z-index:998;
+background:transparent;
+border-bottom:0;
+}
+.mini-in{
+max-width:960px; margin:0 auto; padding:6px 16px;
+display:flex; gap:10px; align-items:center; justify-content:space-between;
+font-size:12.5px;
+}
+.mini-actions a{
+font-weight:400;
+font-size:12.5px;
+color:#555;
+text-decoration:none;
+opacity:.55; /* very faint */
+transition:opacity .15s ease, color .15s ease;
+}
+.mini-actions a:hover{
+opacity:.85;
+color:var(--gold-strong);
+}
+
+/* Document stage */
+.stage{
+min-height:calc(100vh - 40px);
+display:grid; place-items:start center;
+padding:28px 16px 72px;
+}
+.page{
+width:min(820px, 92vw);
+background:var(--paper);
+border:1px solid var(--frame);
+border-radius:14px;
+box-shadow:var(--shadow);
+padding:52px 56px 44px;
+}
+
+/* Type system */
+h1{
+margin:0 0 16px;
+font:700 30px/1.22 Georgia, "Times New Roman", serif;
+letter-spacing:.2px;
+color:var(--gold-strong);
+text-align:center;
+}
+.subtitle{
+margin:-6px 0 26px;
+text-align:center;
+color:#bda955;
+font-weight:600;
+}
+h2{
+margin:26px 0 10px;
+font:700 20px/1.28 Georgia,serif;
+color:var(--gold);
+}
+p{ margin:0 0 14px; }
+ul{ margin:0 0 16px 1.1rem; }
+li{ margin:6px 0; }
+strong{ color:var(--gold-strong); font-weight:700; }
+em{ color:#4a463a; }
+
+hr{
+border:0; height:1px;
+background:linear-gradient(90deg, transparent, var(--frame), transparent);
+margin:22px 0;
+}
+
+.doc-foot{
+margin-top:26px; display:flex; justify-content:space-between; align-items:center;
+color:#857a62; font-size:13px;
+}
+.doc-foot a{ color:#857a62; text-decoration:underline; }
+
+@media (max-width:560px){
+.page{ padding:34px 20px; }
+h1{ font-size:26px; }
+}
 </style>
 </head>
 <body>
-<h1>Chair Prospectus — Role & OKRs</h1>
-<p class="lede">The Chair arrives at the level of the first saver — the first family — quietly, with fierce intent to see them begin. The act is authorship; the cadence is restoration.</p>
-<div class="badge">Private — invitation only</div>
 
-<h2>Role & Presence</h2>
-<p>The Chair is not above the community but <em>with</em> it — present at Saver One. The first duty is to make starting
-possible: consent, safeguards, and a first advance that can be restored. Eyes stay on the family, not the theatre.</p>
+<!-- Minimal header: only library + sign out (faint links) -->
+<div class="mini-bar">
+<div class="mini-in">
+<div class="mini-actions">
+<a href="/investors/">← Back to Investor &amp; Chair Documents</a>
+</div>
+<div class="mini-actions">
+<a href="#" id="signout">Sign out</a>
+</div>
+</div>
+</div>
 
-<h2>Operating Principles</h2>
+<!-- Immersive document stage -->
+<div class="stage">
+<article class="page" role="document" aria-labelledby="title">
+<header>
+<h1 id="title">Chair Prospectus — Role &amp; OKRs</h1>
+<div class="subtitle">Stand at Saver&nbsp;1 — hold the cadence 1&nbsp;→&nbsp;500</div>
+</header>
+
+<hr>
+
+<section>
+<h2>Role summary</h2>
+<p>
+The Chair stands at the level of <strong>Saver 1</strong> — steady, discreet, intent on first light — and
+holds the finite progression to <strong>500 households</strong>. This is not a ceremonial role; it is a
+<strong>cadence role</strong>: confirming consent and privacy, backing the practitioner’s weekly rhythm,
+and ensuring that <em>restoration loops</em> are reliable and humane.
+</p>
+</section>
+
+<section>
+<h2>Core stance</h2>
 <ul>
-<li><strong>Dignity by design:</strong> never-spent corpus; restoration beats rhetoric.</li>
-<li><strong>Small to prove, then repeat:</strong> Community ONE by stealth → a few more → regional; national later.</li>
-<li><strong>Transparency without spectacle:</strong> quiet reporting cadence; independent review.</li>
-<li><strong>Safeguards before scale:</strong> eligibility, verification, privacy compact.</li>
+<li><strong>Dignity-first:</strong> narratives are human; data is governed; consent is real.</li>
+<li><strong>Quiet ignition:</strong> Cornwall Community One before publicity; evidence before noise.</li>
+<li><strong>Finite milestones:</strong> 1 → 10 → 50 → 100 → 200 → 350 → 500, each with audit-ready notes.</li>
 </ul>
+</section>
 
-<h2>180-Day OKRs (First Light)</h2>
+<section>
+<h2>OKRs (illustrative)</h2>
 <ul>
-<li><strong>O1:</strong> Author Saver One’s start.<br>
-<em>KR1.1</em> Consent captured; safeguards verified.<br>
-<em>KR1.2</em> First advance placed; restoration schedule co-agreed.<br>
-<em>KR1.3</em> First restoration loop completed and logged.</li>
-<li><strong>O2:</strong> Establish cadence & credibility.<br>
-<em>KR2.1</em> Weekly review rhythm (Chair + steward + practitioner).<br>
-<em>KR2.2</em> 10 households oriented; 5 begin; 3 complete first loop.</li>
-<li><strong>O3:</strong> Safeguard the corpus & privacy.<br>
-<em>KR3.1</em> Governance & Privacy Compact adopted.<br>
-<em>KR3.2</em> Independent oversight engaged.</li>
-<li><strong>O4:</strong> Prepare the template for replication.<br>
-<em>KR4.1</em> Community ONE playbook v1 (internal).<br>
-<em>KR4.2</em> Two additional communities pre-qualified.</li>
+<li><strong>O1 — First Light:</strong> light the first household; confirm cadence and supports.</li>
+<li><strong>KR1.1</strong> Consent + privacy compact acknowledged; baseline captured.</li>
+<li><strong>KR1.2</strong> First advance placed; <em>daily restoration cadence</em> co-agreed.</li>
+<li><strong>KR1.3</strong> First <em>restoration loop</em> completed and logged (balances visible by night).</li>
 </ul>
-
-<h2>Cadence & Governance</h2>
 <ul>
-<li><strong>Weekly:</strong> Chair + steward + practitioner review: consents, placements, restorations, issues.</li>
-<li><strong>Monthly:</strong> Quiet internal update: restoration rate, issues resolved.</li>
-<li><strong>Quarterly:</strong> Oversight review; privacy compact audit ticks.</li>
+<li><strong>O2 — Evidence:</strong> ten, then fifty savers; variability understood; ratios improving.</li>
+<li><strong>O3 — Stewarded scale:</strong> reach 500; replication pack complete for next communities.</li>
 </ul>
+</section>
 
-<h2>Measures of Proof</h2>
+<section>
+<h2>Time &amp; cadence</h2>
 <ul>
-<li>Saver One begins; first loop restored on time.</li>
-<li>Early cohort: 10 → 50 → 100 households with improving cadence.</li>
-<li>Corpus intact; privacy honoured; spectacle refused.</li>
+<li><strong>Weekly 45-min</strong> Chair–Steward–Practitioner checkpoint (three-in-concert).</li>
+<li><strong>Monthly review</strong> of restoration latency, retailer coverage, and household narratives.</li>
+<li><strong>Quarterly board note</strong> (concise) with milestone status and replication readiness.</li>
 </ul>
+</section>
 
-<hr><p class="meta">Bridge Across Community · CSS is the infrastructure; BAC is its bridge into community.</p>
+<section>
+<h2>Governance &amp; privacy</h2>
+<p>
+The <strong>privacy compact</strong> governs consent, data minimisation, and narrative dignity.
+Evidence is aggregated; households are not exposed. The Chair ensures governance is
+<strong>lived</strong> — not just written.
+</p>
+</section>
+
+<section>
+<h2>What success looks like</h2>
+<ul>
+<li><strong>Habit established:</strong> small, real-time discretionary savings, visible daily.</li>
+<li><strong>Restoration discipline:</strong> the perpetual fund is restored on schedule, not spent.</li>
+<li><strong>Replication ready:</strong> Cornwall Community One documented for the next few communities, then regional.</li>
+</ul>
+</section>
+
+<hr>
+
+<section>
+<p>
+If aligned, we suggest a quiet working session to confirm <strong>First Light</strong>
+and begin the milestone cadence.
+</p>
+</section>
+
+<div class="doc-foot">
+<span>Bridge Across Community — Private Brief</span>
+<a href="/investors/">Back to Investor &amp; Chair Documents</a>
+</div>
+</article>
+</div>
+
+<script>
+// Sign out: clear session + return to public home
+(function(){
+const out = document.getElementById('signout');
+if(out){
+out.addEventListener('click', function(e){
+e.preventDefault();
+try{ localStorage.clear(); sessionStorage.clear(); }catch(_){}
+location.href = '/';
+});
+}
+})();
+</script>
 </body>
 </html>
