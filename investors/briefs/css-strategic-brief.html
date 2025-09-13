@@ -1,78 +1,240 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Guard snippet -->
 <script>
-(function(){try{const get=k=>localStorage.getItem(k)||sessionStorage.getItem(k);const u=get("bac_user");const t=Number(get("bac_until")||0);if(!u||Date.now()>t){location.replace("/investors/login.html");}}catch(e){location.replace("/investors/login.html");}})();
+(function(){
+try{
+const get = k => localStorage.getItem(k) || sessionStorage.getItem(k);
+const u = get("bac_user");
+const t = Number(get("bac_until") || 0);
+if(!u || Date.now() > t){ location.replace("/investors/login.html"); }
+}catch(e){ location.replace("/investors/login.html"); }
+})();
 </script>
-<script>window.BAC_CURRENT="css-strategic-brief";</script>
-<script src="/investors/portal-nav.js?v=1"></script>
+
 <meta charset="utf-8">
 <title>CSS Strategic Brief | Bridge Across Community</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+
 <style>
-:root{--gold:#caa21b; --ink:#222}
-body{margin:40px auto;max-width:860px;padding:0 22px;font:16px/1.65 Georgia,serif;color:var(--ink);background:#fff}
-h1{margin:0 0 .6rem;font:700 28px/1.2 Georgia,serif;color:var(--gold)}
-h2{margin:1.4rem 0 .45rem;font:700 20px/1.25 Georgia,serif;color:var(--gold)}
-p{margin:.5rem 0} ul{margin:.4rem 0 .9rem 1.2rem} li{margin:.25rem 0}
-hr{border:0;border-top:1px solid #e7e2ce;margin:1.2rem 0}
-.meta{font:13px/1.3 system-ui,Segoe UI,Arial;color:#777;margin-top:1.2rem}
-.badge{display:inline-block;padding:.22rem .5rem;border:1px solid rgba(202,162,27,.55);color:#7a6511;background:rgba(202,162,27,.08);border-radius:5px;font:12px/1.1 system-ui,Segoe UI,Arial}
-em{font-style:italic}
+:root{
+/* Surround + page */
+--sur-top:#fbf8ef; /* warm ivory surround */
+--sur-bot:#f5ecd6; /* pale gold ivory */
+--paper:#ffffff; /* WHITER page for clarity */
+--frame:#e0d3aa; /* gold-tinted frame */
+
+/* Palette */
+--gold:#caa21b;
+--gold-strong:#d4af37;
+--ink:#333;
+--muted:#6f6a5a;
+
+/* Effects */
+--shadow:0 28px 56px rgba(0,0,0,.18),
+0 2px 0 rgba(255,255,255,.65) inset;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0;
+background:
+radial-gradient(1200px 700px at 70% -10%, rgba(202,162,27,.10), transparent 60%),
+linear-gradient(180deg, var(--sur-top) 0%, var(--sur-bot) 100%);
+font:15px/1.6 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+color:var(--ink);
+}
+
+/* Ultra-minimal header (faint links) */
+.mini-bar{
+position:sticky; top:0; z-index:998;
+background:transparent;
+border-bottom:0;
+}
+.mini-in{
+max-width:960px; margin:0 auto; padding:6px 16px;
+display:flex; gap:10px; align-items:center; justify-content:space-between;
+font-size:12.5px;
+}
+.mini-actions a{
+font-weight:400;
+font-size:12.5px;
+color:#555;
+text-decoration:none;
+opacity:.55; /* very faint */
+transition:opacity .15s ease, color .15s ease;
+}
+.mini-actions a:hover{
+opacity:.85;
+color:var(--gold-strong);
+}
+
+/* Document stage */
+.stage{
+min-height:calc(100vh - 40px);
+display:grid; place-items:start center;
+padding:28px 16px 72px;
+}
+.page{
+width:min(820px, 92vw);
+background:var(--paper);
+border:1px solid var(--frame);
+border-radius:14px;
+box-shadow:var(--shadow);
+padding:52px 56px 44px;
+}
+
+/* Type system */
+h1{
+margin:0 0 16px;
+font:700 30px/1.22 Georgia, "Times New Roman", serif;
+letter-spacing:.2px;
+color:var(--gold-strong);
+text-align:center;
+}
+.subtitle{
+margin:-6px 0 26px;
+text-align:center;
+color:#bda955;
+font-weight:600;
+}
+h2{
+margin:26px 0 10px;
+font:700 20px/1.28 Georgia,serif;
+color:var(--gold);
+}
+p{ margin:0 0 14px; }
+ul{ margin:0 0 16px 1.1rem; }
+li{ margin:6px 0; }
+strong{ color:var(--gold-strong); font-weight:700; }
+em{ color:#4a463a; }
+
+hr{
+border:0; height:1px;
+background:linear-gradient(90deg, transparent, var(--frame), transparent);
+margin:22px 0;
+}
+
+.doc-foot{
+margin-top:26px; display:flex; justify-content:space-between; align-items:center;
+color:#857a62; font-size:13px;
+}
+.doc-foot a{ color:#857a62; text-decoration:underline; }
+
+@media (max-width:560px){
+.page{ padding:34px 20px; }
+h1{ font-size:26px; }
+}
 </style>
 </head>
 <body>
-<h1>CSS Strategic Brief</h1>
-<p class="badge">Private — invitation only</p>
 
-<h2>Core Premise</h2>
-<p><strong>CSS — Community Savings Solution</strong> treats <em>accumulation</em> as first-class infrastructure. Funds are
-<strong>placed</strong> (advanced) but <strong>not consumed</strong>; they <em>return</em> via co-agreed restoration. Proof starts at human scale:
-one family → a cohort → a community.</p>
+<!-- Minimal header: only library + sign out (faint links) -->
+<div class="mini-bar">
+<div class="mini-in">
+<div class="mini-actions">
+<a href="/investors/">← Back to Investor &amp; Chair Documents</a>
+</div>
+<div class="mini-actions">
+<a href="#" id="signout">Sign out</a>
+</div>
+</div>
+</div>
 
-<h2>Safeguarded Fund (Never-Spent)</h2>
+<!-- Immersive document stage -->
+<div class="stage">
+<article class="page" role="document" aria-labelledby="title">
+<header>
+<h1 id="title">CSS Strategic Brief</h1>
+<div class="subtitle">Real-time discretionary savings — daily habit, daily evidence</div>
+</header>
+
+<hr>
+
+<section>
+<h2>Design intent</h2>
+<p>
+<strong>CSS (Community Savings Solution)</strong> captures <em>small, discretionary amounts</em> in real time and
+restores a perpetual, safeguarded fund. Balances are visible to savers <strong>by end of day</strong>;
+retailers settle on their standard cycles; the charity fund restores on schedule — with dignity.
+</p>
+</section>
+
+<section>
+<h2>Flow of a day</h2>
 <ul>
-<li>Capital sits in a safeguarded structure with a clear restriction: never spent; only placed and restored.</li>
-<li><strong>Placement rules:</strong> small, deliberate, verified eligibility; first loop is tightly coached.</li>
-<li><strong>Restoration:</strong> schedule is co-agreed and humanly possible; early loops are short to build cadence.</li>
+<li><strong>Morning:</strong> Saver places a small amount; it is made available to their savings account.</li>
+<li><strong>Evening:</strong> Another small amount captured; end-of-day the two are reflected in their balance.</li>
+<li><strong>Nightly:</strong> The system posts a <em>daily restoration</em> using the retailer batch file.</li>
 </ul>
+<p>
+The saver experiences <strong>convenient, dignified accumulation</strong>. The community fund experiences
+<strong>disciplined restoration</strong>. Both see progress each day.
+</p>
+</section>
 
-<h2>Real-Time Proof of Savings</h2>
-<p>A mother in Community ONE saves <em>in the flow of her day</em>. After the school run, she saves £3.33; that amount
-is made available in her savings account immediately. That evening, buying groceries, she saves another £5.62; by the
-end of the day, her account shows £8.95 saved.</p>
-<p>Behind the scenes, the safeguarded corpus is temporarily down by those amounts. At nightly settlement, when the
-retailer’s SAIV batch file arrives, the system restores the corpus. To the saver, the experience is <strong>real-time
-accumulation</strong>; to investors, the corpus is never spent — it restores daily. This is the mirror-image of debit/credit
-rails: real-time discretionary saving, woven into daily life. Over months and quarters, the profile of such activity
-becomes profound — enabling new product design by local partners.</p>
-
-<h2>Eligibility &amp; Verification</h2>
+<section>
+<h2>Cadence &amp; ratios</h2>
 <ul>
-<li><strong>Eligibility signals:</strong> residency in Community ONE, basic documentation, willingness to enter a restoration schedule.</li>
-<li><strong>Verification:</strong> practitioner-led (church/employer/CU) to keep it human, not bureaucratic.</li>
-<li><strong>Safeguards:</strong> privacy by default; minimal data; clear consent; independent oversight.</li>
+<li><strong>Short intervals early:</strong> <em>daily restorations</em> to establish habit and produce evidence quickly.</li>
+<li><strong>Operational reliability:</strong> retailer batch captured nightly; anomalies flagged for steward review.</li>
+<li><strong>Ratios improve with habit:</strong> restoration latency trends down; weekly variance stabilises.</li>
 </ul>
+</section>
 
-<h2>Placements, Ratios &amp; Cadence</h2>
+<section>
+<h2>People &amp; roles</h2>
 <ul>
-<li><strong>Start small:</strong> prove the loop, then repeat.</li>
-<li><strong>Short intervals early:</strong> daily restorations establish habit and produce evidence quickly.</li>
-<li><strong>Slippage handling:</strong> pause, re-plan, reduce size; dignity first, theatre never.</li>
+<li><strong>Chair:</strong> stands at Saver&nbsp;1, holds the cadence, protects dignity and narrative.</li>
+<li><strong>Steward:</strong> consent, privacy compact, household baselines; monitors daily evidence.</li>
+<li><strong>Practitioner:</strong> weekly rhythm with families; supports the first restoration loops.</li>
 </ul>
+</section>
 
-<h2>Reporting Rhythm</h2>
+<section>
+<h2>Governance</h2>
 <ul>
-<li><strong>Weekly:</strong> Chair + steward + practitioner one-page view: consents, placements, restorations, issues.</li>
-<li><strong>Monthly:</strong> Quiet internal update: households in cadence, restoration rate, issues resolved.</li>
-<li><strong>Quarterly:</strong> Oversight review; privacy compact audit ticks.</li>
+<li><strong>Privacy compact:</strong> consent is real; data is minimised; narratives are human.</li>
+<li><strong>Audit trail:</strong> restoration logs, cadence records, retailer batch receipts.</li>
+<li><strong>Perpetual fund:</strong> <em>not spent</em>; restored predictably; transparently governed.</li>
 </ul>
+</section>
 
-<h2>Community ONE → Replication</h2>
-<p>Community ONE is the lighthouse. We refine quietly; then a few more communities; then regional; <em>national later</em>.
-Cornwall remains the template. Pattern: consent → placement → restoration → cadence → habit → replication.</p>
+<section>
+<h2>Replication path</h2>
+<ul>
+<li><strong>Cornwall — Community One:</strong> establish habit, cadence, and evidence quietly.</li>
+<li><strong>A few more communities:</strong> same pattern, same governance, same dignity.</li>
+<li><strong>Then regional:</strong> once 1&nbsp;→&nbsp;500 is proven and audited.</li>
+</ul>
+</section>
 
-<hr><p class="meta">Bridge Across Community · CSS is the infrastructure; BAC is its bridge into community.</p>
+<hr>
+
+<p class="note"><strong>In one line:</strong> CSS makes saving as easy and frequent as spending — and proves it daily.</p>
+
+<div class="doc-foot">
+<span>Bridge Across Community — Private Brief</span>
+<a href="/investors/">Back to Investor &amp; Chair Documents</a>
+</div>
+</article>
+</div>
+
+<script>
+// Sign out: clear session + return to public home
+(function(){
+const out = document.getElementById('signout');
+if(out){
+out.addEventListener('click', function(e){
+e.preventDefault();
+try{ localStorage.clear(); sessionStorage.clear(); }catch(_){}
+location.href = '/';
+});
+}
+})();
+</script>
 </body>
 </html>
