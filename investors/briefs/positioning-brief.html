@@ -1,54 +1,243 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Guard snippet -->
 <script>
-(function(){try{const get=k=>localStorage.getItem(k)||sessionStorage.getItem(k);const u=get("bac_user");const t=Number(get("bac_until")||0);if(!u||Date.now()>t){location.replace("/investors/login.html");}}catch(e){location.replace("/investors/login.html");}})();
+(function(){
+try{
+const get = k => localStorage.getItem(k) || sessionStorage.getItem(k);
+const u = get("bac_user");
+const t = Number(get("bac_until") || 0);
+if(!u || Date.now() > t){ location.replace("/investors/login.html"); }
+}catch(e){ location.replace("/investors/login.html"); }
+})();
 </script>
-<script>window.BAC_CURRENT="positioning-brief";</script>
-<script src="/investors/portal-nav.js?v=1"></script>
-
 
 <meta charset="utf-8">
 <title>Investor Positioning Brief | Bridge Across Community</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+
 <style>
-:root{--gold:#caa21b; --ink:#222; --muted:#4a4a4a}
-body{margin:40px auto; max-width:860px; padding:0 22px; font:16px/1.65 Georgia, serif; color:var(--ink); background:#fff}
-h1{margin:0 0 .6rem; font:700 28px/1.2 Georgia,serif; color:var(--gold)}
-h2{margin:1.4rem 0 .45rem; font:700 20px/1.25 Georgia,serif; color:var(--gold)}
-p{margin:.5rem 0}
-.lede{font-style:italic; color:#444}
-hr{border:0; border-top:1px solid #e7e2ce; margin:1.2rem 0}
-.meta{font:13px/1.3 system-ui,Segoe UI,Arial; color:#777; margin-top:1.2rem}
-.badge{display:inline-block; padding:.22rem .5rem; border:1px solid rgba(202,162,27,.55); color:#7a6511; background:rgba(202,162,27,.08); border-radius:5px; font:12px/1.1 system-ui,Segoe UI,Arial}
+:root{
+/* Surround + page */
+--sur-top:#fbf8ef; /* warm ivory surround */
+--sur-bot:#f5ecd6; /* pale gold ivory */
+--paper:#ffffff; /* WHITER page for clarity */
+--frame:#e0d3aa; /* gold-tinted frame */
+
+/* Palette */
+--gold:#caa21b;
+--gold-strong:#d4af37;
+--ink:#333;
+--muted:#6f6a5a;
+
+/* Effects */
+--shadow:0 28px 56px rgba(0,0,0,.18),
+0 2px 0 rgba(255,255,255,.65) inset;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0;
+background:
+radial-gradient(1200px 700px at 70% -10%, rgba(202,162,27,.10), transparent 60%),
+linear-gradient(180deg, var(--sur-top) 0%, var(--sur-bot) 100%);
+font:15px/1.6 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+color:var(--ink);
+}
+
+/* Ultra-minimal header (faint links) */
+.mini-bar{
+position:sticky; top:0; z-index:998;
+background:transparent;
+border-bottom:0;
+}
+.mini-in{
+max-width:960px; margin:0 auto; padding:6px 16px;
+display:flex; gap:10px; align-items:center; justify-content:space-between;
+font-size:12.5px;
+}
+.mini-actions a{
+font-weight:400;
+font-size:12.5px;
+color:#555;
+text-decoration:none;
+opacity:.55;
+transition:opacity .15s ease, color .15s ease;
+}
+.mini-actions a:hover{
+opacity:.85;
+color:var(--gold-strong);
+}
+
+/* Document stage */
+.stage{
+min-height:calc(100vh - 40px);
+display:grid; place-items:start center;
+padding:28px 16px 72px;
+}
+.page{
+width:min(820px, 92vw);
+background:var(--paper);
+border:1px solid var(--frame);
+border-radius:14px;
+box-shadow:var(--shadow);
+padding:52px 56px 44px;
+}
+
+/* Type system */
+h1{
+margin:0 0 16px;
+font:700 30px/1.22 Georgia, "Times New Roman", serif;
+letter-spacing:.2px;
+color:var(--gold-strong);
+text-align:center;
+}
+.subtitle{
+margin:-6px 0 26px;
+text-align:center;
+color:#bda955;
+font-weight:600;
+}
+h2{
+margin:26px 0 10px;
+font:700 20px/1.28 Georgia,serif;
+color:var(--gold);
+}
+p{ margin:0 0 14px; }
+ul{ margin:0 0 16px 1.1rem; }
+li{ margin:6px 0; }
+strong{ color:var(--gold-strong); font-weight:700; }
+em{ color:#4a463a; }
+
+hr{
+border:0; height:1px;
+background:linear-gradient(90deg, transparent, var(--frame), transparent);
+margin:22px 0;
+}
+
+.doc-foot{
+margin-top:26px; display:flex; justify-content:space-between; align-items:center;
+color:#857a62; font-size:13px;
+}
+.doc-foot a{ color:#857a62; text-decoration:underline; }
+
+@media (max-width:560px){
+.page{ padding:34px 20px; }
+h1{ font-size:26px; }
+}
 </style>
 </head>
 <body>
-<h1>Investor Positioning Brief — v4</h1>
-<p class="lede">Twenty years of calls to reach the financially excluded; the structural answer begins in Cornwall.</p>
-<div class="badge">Private — invitation only</div>
 
-<h2>Genesis: The Call That Went Unanswered</h2>
-<p>For over two decades, leaders have called for innovation to reach the financially excluded. In 2001, Ron Sandler’s
-landmark review demanded new models for those left behind. Years later, during the WONGA crisis, Archbishop Justin
-Welby challenged the financial system to act in favour of the poorest. And yet, the gap remained.</p>
+<!-- Minimal header: only library + sign out (faint links) -->
+<div class="mini-bar">
+<div class="mini-in">
+<div class="mini-actions">
+<a href="/investors/">← Back to Investor &amp; Chair Documents</a>
+</div>
+<div class="mini-actions">
+<a href="#" id="signout">Sign out</a>
+</div>
+</div>
+</div>
 
-<h2>Enter CSS and BAC</h2>
-<p><strong>CSS — Community Savings Solution</strong> builds the infrastructure of accumulation where the status quo has engineered
-depletion. <strong>BAC — Bridge Across Community</strong> is the distribution and onboarding channel through churches, employers,
-and community organisations. Cornwall’s <em>Community ONE</em> is the template for replication.</p>
-
-<h2>The First Light</h2>
-<p>John Doerr’s OKR philosophy recognises that every great system begins with a single defining action. For us, that action
-is the <strong>Chairperson of Heart</strong> standing at the level of <em>Saver One</em> — the first family — quietly, with fierce intent to
-see them begin. That act authors the cadence of credibility.</p>
-
-<h2>Finite, Defining Milestones</h2>
-<p>Momentum becomes observable and trusted early: M1 → consent &amp; safeguards; M1.5 → first advance; M2 → restoration cadence
-demonstrated; onward to habit formation. One household becomes ten, then fifty, then five hundred. Cornwall proves; replication follows.</p>
+<!-- Immersive document stage -->
+<div class="stage">
+<article class="page" role="document" aria-labelledby="title">
+<header>
+<h1 id="title">Investor Positioning Brief</h1>
+<div class="subtitle">Answering a two-decade call — with a structural invention</div>
+</header>
 
 <hr>
-<p class="meta">Bridge Across Community · CSS is the infrastructure; BAC is its bridge into community.</p>
+
+<section>
+<h2>The call</h2>
+<p>
+From <strong>Ron Sandler (2001)</strong> to <strong>Justin Welby</strong> and beyond, leaders have asked for
+innovation that genuinely reaches the financially excluded. Many initiatives helped, but the
+<strong>infrastructure</strong> to turn everyday discretion into durable savings — with dignity — has
+remained missing.
+</p>
+</section>
+
+<section>
+<h2>The answer</h2>
+<p>
+<strong>Community Savings Solution (CSS)</strong> is a real-time savings fabric that captures
+everyday amounts at the moment of choice (pennies to pounds), and restores a perpetual
+fund that is <em>not spent</em>, held in trust, managed for community. <strong>Bridge Across Community (BAC)</strong>
+provides distribution and human onboarding — beginning with <strong>Community One</strong> in Cornwall.
+</p>
+<p>
+The breakthrough is a system of <strong>restoration loops</strong>:
+savers see their balances by day’s end; the charity fund restores on schedule; retailers settle on their normal cycles.
+The result is a <strong>habit engine</strong> with evidence visible early.
+</p>
+</section>
+
+<section>
+<h2>Why now</h2>
+<ul>
+<li><strong>Real-time rails</strong> (payments + messaging) can support micro-restorations reliably.</li>
+<li><strong>Community partners</strong> (credit unions, local stewards) are ready to anchor trust.</li>
+<li><strong>Quiet replication</strong> from Cornwall outward can prove model before scale.</li>
+</ul>
+</section>
+
+<section>
+<h2>Positioning</h2>
+<ul>
+<li><strong>Not</strong> another budgeting app; a <strong>structural layer</strong> for discretionary saving.</li>
+<li><strong>Not</strong> charity handouts; a <strong>perpetual community asset</strong> that is restored, not spent.</li>
+<li><strong>Not</strong> national first; <strong>Community One first</strong>, then a handful, then regional.</li>
+</ul>
+</section>
+
+<section>
+<h2>What we ask of the Chair / Investor</h2>
+<ul>
+<li><strong>Stand at Saver&nbsp;1:</strong> light the first household — quietly, with fierce intent.</li>
+<li><strong>Hold OKRs:</strong> 1 → 500 in finite steps, audited, humane.</li>
+<li><strong>Protect dignity:</strong> privacy compact respected; narratives told with care.</li>
+</ul>
+</section>
+
+<section>
+<h2>What you get</h2>
+<ul>
+<li><strong>Early evidence:</strong> daily restorations; balances visible nightly.</li>
+<li><strong>Replicable system:</strong> steward + practitioner cadence; retailer batch; board-ready metrics.</li>
+<li><strong>Upside path:</strong> data-safe <strong>Sales Promotions Agency</strong> layered carefully, dignity-first.</li>
+</ul>
+</section>
+
+<hr>
+
+<p class="note"><strong>In one line:</strong> CSS turns everyday discretion into durable savings, and BAC brings it to life — one family at a time — starting in Cornwall.</p>
+
+<div class="doc-foot">
+<span>Bridge Across Community — Private Brief</span>
+<a href="/investors/">Back to Investor &amp; Chair Documents</a>
+</div>
+</article>
+</div>
+
+<script>
+// Sign out: clear session + return to public home
+(function(){
+const out = document.getElementById('signout');
+if(out){
+out.addEventListener('click', function(e){
+e.preventDefault();
+try{ localStorage.clear(); sessionStorage.clear(); }catch(_){}
+location.href = '/';
+});
+}
+})();
+</script>
 </body>
 </html>
