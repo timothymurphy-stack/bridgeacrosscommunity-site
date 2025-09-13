@@ -8,11 +8,13 @@
 <style>
 :root{
 --gold:#caa21b; /* house gold */
+--gold-strong:#d4af37; /* brighter gold for highlights */
 --ink:#222; /* primary text */
 --ivory:#f6f1e3; /* warmer ivory */
 --card:#ffffff; /* card background */
 --line:#e7dfc7; /* subtle borders */
 --shadow:0 10px 30px rgba(0,0,0,.08);
+--muted:#6f6a5a;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -29,10 +31,10 @@ display:grid; place-items:center; padding:28px;
 
 .wrap{width:min(520px,92vw); position:relative}
 
-/* Watermark bridge (pure CSS/SVG) */
+/* Watermark bridge (pure SVG) */
 .watermark{
 position:absolute; inset:-80px -40px auto -40px; pointer-events:none; opacity:.14;
-filter:blur(.2px); /* subtle soften */
+filter:blur(.2px);
 transform:translateY(-14px);
 }
 .watermark svg{width:100%; height:auto; display:block}
@@ -43,16 +45,13 @@ display:flex; align-items:center; gap:.6rem; margin-bottom:16px;
 text-decoration:none; color:var(--ink);
 }
 .brand .mark{
-width:28px; height:28px; border-radius:50%;
-background:#fff; border:1px solid var(--gold); position:relative; flex:0 0 28px;
+width:32px; height:32px; border-radius:50%;
+background:#fff; border:1px solid var(--gold); position:relative; flex:0 0 32px;
 box-shadow:0 1px 0 rgba(255,255,255,.6) inset;
+display:grid; place-items:center; overflow:hidden;
 }
-/* gold bridge arc inside the mark */
-.brand .mark::before{
-content:""; position:absolute; left:5px; right:5px; bottom:11px; height:2px;
-background:var(--gold); transform:skewX(-10deg);
-box-shadow:0 -6px 0 -5px var(--gold), 0 -3px 0 -5px var(--gold);
-}
+/* GOLD ARC inside the badge */
+.brand .mark svg{display:block}
 .brand span{
 font:700 15px/1.1 Georgia,serif; letter-spacing:.2px;
 }
@@ -64,11 +63,10 @@ box-shadow:var(--shadow);
 padding:28px 24px 24px;
 }
 h1{
-margin:0 0 12px; color:var(--gold);
+margin:0 0 10px; color:var(--gold);
 font:700 22px/1.25 Georgia,serif;
 }
-/* minimalist subtitle (kept concise for elegance) */
-.lede{margin:.25rem 0 1.1rem; color:#6e6656; font-size:14px}
+.lede{margin:.25rem 0 1.1rem; color:var(--muted); font-size:14px}
 
 label{display:block; margin:.35rem 0 .3rem; font-weight:600}
 input[type=email]{
@@ -94,7 +92,7 @@ button:active{transform:translateY(1px)}
 
 .msg{margin-top:.7rem; color:#b32727; min-height:1.25em}
 
-/* Dark mode polish */
+/* Dark mode */
 @media (prefers-color-scheme: dark){
 body{background:linear-gradient(180deg,#100f0c 0%, #0e0d0b 100%)}
 .card{background:#141312; border-color:#2a271f}
@@ -107,9 +105,14 @@ button{background:#caa21b; color:#100f0c}
 </head>
 <body>
 <div class="wrap">
-<!-- Elegant brand button with visible mark -->
+<!-- Elegant brand button with GOLD ARC mark -->
 <a class="brand" href="/">
-<div class="mark" aria-hidden="true"></div>
+<div class="mark" aria-hidden="true">
+<!-- Arc is sized to feel like the bridge curvature -->
+<svg width="26" height="14" viewBox="0 0 26 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+<path d="M2 12 Q13 2 24 12" stroke="var(--gold-strong)" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>
+</div>
 <span>Bridge Across Community</span>
 </a>
 
