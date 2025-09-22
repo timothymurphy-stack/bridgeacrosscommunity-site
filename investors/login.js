@@ -5,7 +5,7 @@ const ALLOW = {
 "christophersswain@googlemail.com": "/investors/index.html",
 "chrisc@bwmpartners.co.uk": "/investors/index.html",
 // add more like:
-// "john.doerr@example.com": "/investors/index.html",
+"michaelg@watcombepl.com>": "/investors/index.html",
 // "john.doerr@example.com": "/investors/index.html",
 //"alisonveitch3@gmail.com": "/investors/index.html"
 };
